@@ -29,6 +29,7 @@
           buildInputs = with pkgs; [
             nil
             mdbook
+            mdbook-katex
           ];
         };
 
