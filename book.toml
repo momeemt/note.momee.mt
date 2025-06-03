@@ -1,0 +1,9 @@
+[book]
+authors = ["Mutsuha Asada"]
+language = "ja"
+src = "src"
+title = "note.momee.mt"
+
+[output.html]
+mathjax-support = true
+
