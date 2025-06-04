@@ -1,5 +1,13 @@
 # Summary
 
 - [note.momee.mt](./README.md)
-- [信号処理](<>)
-  - [フーリエ変換](./signal-processing/fourier.md)
+- [Nix]()
+    - [nixpkgs レビューログ](./nix/nixpkgs-review-log.md)
+    - [NixOSでフォントが読み込めないとき](./nix/font-loading.md)
+- [信号処理]()
+    - [フーリエ変換](./signal-processing/fourier.md)
+- [電気電子工学]()
+    - [半導体素子](./ee/semiconductor.md)
+- [論文]()
+    - [2025/06/04: Breaking the Sorting Barrier for Directed Single-Source Shortest Paths](./papers/arXiv/2504.17003.md)
+
