@@ -4,13 +4,14 @@
 信号 $f(t)$ のフーリエ変換 $F(\omega)$ は次のように定義される。
 
 $$
-F(\omega) = \int^\infty_{-\infty} f(t) e^{-j\omega t} \text{d}t
+F(\omega) = \int^\infty_{-\infty} f(t) e^{-j\omega t} \text{d}t = \mathcal{F}[f(t)]
 $$
 
 逆に、周波数領域を時間領域に変換する写像を**フーリエ逆変換**と呼び、次のように定義される。
 
 $$
 f(t) = \frac{1}{2\pi} \int^\infty_{-\infty} F(\omega) e^{j\omega t} \text{d}\omega
+= \mathcal{F}^{-1}[F(\omega)]
 $$
 
 両者を合わせて**フーリエ変換対**と呼ぶ。それを $f(t) \Leftrightarrow F(\omega)$ と書く。
@@ -19,3 +20,24 @@ $$
 
 フーリエ変換が存在する十分条件は、 $f(t)$ が有限の不連続点を持ち、かつ可積分（$\int^\infty_{-\infty} f(t)\text{d}t < \infty$）であること。
 ステップ関数や三角関数など、これを満たさない関数についても $e^{-\epsilon |t|}$ などの減衰項を掛けた式のフーリエ変換を考えて、$\epsilon \to 0^+$ の極限を取ると元の関数に「近づける」ことができる。
+
+## 主要な関数のフーリエ変換対
+
+### デルタ関数
+
+任意のなめらかな関数$f(x)$に対して、
+
+$$
+\int^\infty_{-\infty}f(x)\delta(x)\text{d}x = f(0)
+$$
+
+を満たすような$\delta(x)$をデルタ関数という。
+デルタ関数は超関数であるが関数ではない。
+インパルス信号を表現しており、フーリエ変換すると$1$。
+
+$$
+\delta(t) \Leftrightarrow 1
+$$
+
+### ボックス関数
+
