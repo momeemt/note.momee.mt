@@ -398,6 +398,7 @@ D-FFはクロックが立ち上がり（立ち下り）に同期する（立ち�
 slave側セレクタが動作する = 立ち上がる前に、入力がmasterラッチを通過していなければいけない。したがって、そのmasterラッチの伝播遅延分だけセットアップ時間として確保しなければならない。マスタースレーブ型のD-FFのセットアップ時間は、少なくともクロック周期の半分になる。
 また、NOTゲートの伝播遅延とセレクタ切り替わり時間の間に入力が変化すると、変化後の値がslaveに記憶されてしまうため、ホールド時間を確保しなければならない。</p>
 <h2 id="エッジトリガ型"><a class="header" href="#エッジトリガ型">エッジトリガ型</a></h2>
+<p>SRラッチを使う。マスタースレーブ型と異なり、セットアップ時間がクロック半周よりも短くて良い。</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="vlsi"><a class="header" href="#vlsi">VLSI</a></h1>
 <p>超大規模集積回路（Very Large-Scale Integration）のこと。
