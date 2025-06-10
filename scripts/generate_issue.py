@@ -4,7 +4,7 @@ import random
 import json
 import pathlib
 import subprocess
-import openai
+from openai import OpenAI
 
 notes = [p for p in pathlib.Path('src').rglob('*.md') if p.name not in ('SUMMARY.md', 'README.md')]
 
@@ -33,13 +33,13 @@ payload = {
     'temperature': 0.5
 }
 
-openai.api_key = os.environ['OPENAI_API_KEY']
-response = openai.ChatCompletion.create(
+client = OpenAI(api_key=os.environ['OPENAI_API_KEY'])
+response = client.chat.completions.create(
     model=payload['model'],
     messages=payload['messages'],
     temperature=payload['temperature'],
 )
-message = response['choices'][0]['message']['content']
+message = response.choices[0].message.content
 
 
 issue = json.loads(message)
