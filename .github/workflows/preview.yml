@@ -7,14 +7,14 @@ on:
       - synchronize
       - closed
 
-permissions:
-  contents: write
-
 concurrency: preview-${{ github.ref }}
 
 jobs:
   preview:
     runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      issues: write
     steps:
       - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v31
