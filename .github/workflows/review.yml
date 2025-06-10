@@ -1,8 +1,7 @@
-name: Auto Issue
+name: Note Review
 
 on:
   schedule:
-    # Run every day at 00:00 JST (15:00 UTC)
     - cron: '0 15 * * *'
   workflow_dispatch:
 

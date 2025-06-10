@@ -6,9 +6,7 @@ import pathlib
 import subprocess
 import openai
 
-# Collect all markdown notes under src except SUMMARY.md and README.md
-notes = [p for p in pathlib.Path('src').rglob('*.md')
-         if p.name not in ('SUMMARY.md', 'README.md')]
+notes = [p for p in pathlib.Path('src').rglob('*.md') if p.name not in ('SUMMARY.md', 'README.md')]
 
 if not notes:
     print('No notes found')
@@ -27,7 +25,7 @@ system_message = (
 user_message = f'Note path: {note}\n\n{content}'
 
 payload = {
-    'model': os.getenv('OPENAI_MODEL', 'gpt-4o'),
+    'model': os.getenv('OPENAI_MODEL', 'gpt-4.1'),
     'messages': [
         {'role': 'system', 'content': system_message},
         {'role': 'user', 'content': user_message}
