@@ -4,8 +4,7 @@ import random
 import json
 import pathlib
 import subprocess
-import urllib.request
-import urllib.error
+import openai
 
 # Collect all markdown notes under src except SUMMARY.md and README.md
 notes = [p for p in pathlib.Path('src').rglob('*.md')
@@ -36,20 +35,13 @@ payload = {
     'temperature': 0.5
 }
 
-api_key = os.environ['OPENAI_API_KEY']
-req = urllib.request.Request(
-    'https://api.openai.com/v1/chat/completions',
-    data=json.dumps(payload).encode(),
-    headers={
-        'Authorization': f'Bearer {api_key}',
-        'Content-Type': 'application/json'
-    },
-    method='POST'
+openai.api_key = os.environ['OPENAI_API_KEY']
+response = openai.ChatCompletion.create(
+    model=payload['model'],
+    messages=payload['messages'],
+    temperature=payload['temperature'],
 )
-
-with urllib.request.urlopen(req, timeout=60) as resp:
-    resp_body = resp.read()
-message = json.loads(resp_body)['choices'][0]['message']['content']
+message = response['choices'][0]['message']['content']
 
 
 issue = json.loads(message)
