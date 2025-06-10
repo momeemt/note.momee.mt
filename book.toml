@@ -7,3 +7,6 @@ title = "note.momee.mt"
 [preprocessor.katex]
 after = ["links"]
 
+[output.html]
+additional-js = ["assets/fzf.umd.js", "assets/elasticlunr.js"]
+
