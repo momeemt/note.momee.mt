@@ -1,0 +1,29 @@
+name: Preview
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+
+permissions:
+  contents: write
+
+concurrency: preview-${{ github.ref }}
+
+jobs:
+  preview:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+      - run: |
+          nix profile install "nixpkgs#mdbook" "nixpkgs#mdbook-katex"
+          mdbook build
+      - name: Deploy PR preview
+        if: github.event.action != 'closed'
+        uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: book
+
