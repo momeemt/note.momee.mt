@@ -32,22 +32,7 @@ resp = client.models.generate_content(
     ),
 )
 
-raw = None
-for cand in resp.candidates or []:
-    if cand.finish_reason == types.Candidate.FinishReason.SAFETY:
-        continue
-    parts = [p.text for p in cand.content.parts if hasattr(p, "text")]
-    if parts:
-        raw = "".join(parts).strip()
-        break
-if not raw:
-    raise RuntimeError("Model returned no usable text (safety filtered).")
-
-m = re.search(r"\{.*\}", raw, re.S)
-if not m:
-    raise RuntimeError(f"JSON not found in model output:\n{raw}")
-
-issue = json.loads(m.group(0))
+issue = json.loads(resp.text.strip())
 
 subprocess.run(
     ["gh", "issue", "create", "--title", issue["title"], "--body", issue["body"]],
