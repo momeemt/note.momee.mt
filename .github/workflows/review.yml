@@ -15,3 +15,4 @@ jobs:
       - uses: momeemt/senpai/actions/senpai@main
         with:
           gemini_api_key: ${{ secrets.AI_STUDIO_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
