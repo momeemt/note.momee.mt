@@ -21,26 +21,24 @@ if not notes:
 note_path = random.choice(notes)
 note_text = note_path.read_text(encoding="utf-8")
 
+genai.configure(api_key=os.environ["AI_STUDIO_API_KEY"])
+
+model = genai.GenerativeModel("gemini-2.5-flash-preview")
+
 system_prompt = (
     "あなたはコンピュータサイエンスの講義ノートをレビューする有能なアシスタントです。\n"
     "以下のノートを読み、次のいずれか 1 つについて **日本語** で助言を行い、"
     '必ず JSON 形式 {"title": "...", "body": "..."} で出力してください。\n'
     "1. 誤りの訂正と参考文献を示す\n"
     "2. 次に学ぶべきトピックを提案する\n"
-    "3. 現在の範囲を超えた発展的な資料を紹介する"
+    "3. 現在の範囲を超えた発展的な資料を紹介する\n"
+    "――――――――――――――――――――――――――――――\n"
 )
+prompt = system_prompt + f"Note path: {note_path}\n\n{note_text}"
 
-user_prompt = f"Note path: {note_path}\n\n{note_text}"
-
-client = genai.Client(api_key=os.environ["AI_STUDIO_API_KEY"])
-
-response = client.models.generate_content(
-    model="gemini-2.5-flash-preview",
-    contents=[
-        {"role": "system", "parts": system_prompt},
-        {"role": "user", "parts": user_prompt},
-    ],
-    generation_config={"temperature": 0.5},
+response = model.generate_content(
+    prompt,
+    generation_config=genai.GenerationConfig(temperature=0.5),
 )
 
 issue_json = json.loads(response.text.strip())
