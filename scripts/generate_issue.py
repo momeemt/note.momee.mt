@@ -1,58 +1,60 @@
 #!/usr/bin/env python3
-import os
-import random
 import json
+import os
 import pathlib
+import random
 import subprocess
-from openai import OpenAI
 
-notes = [p for p in pathlib.Path('src').rglob('*.md') if p.name not in ('SUMMARY.md', 'README.md')]
+from google import genai
+
+notes_dir = pathlib.Path("src")
+notes = [
+    p
+    for p in notes_dir.rglob("*.md")
+    if p.name not in {"SUMMARY.md", "README.md"}
+]
 
 if not notes:
-    print('No notes found')
-    exit(0)
+    print("No notes found under 'src/'")
+    raise SystemExit(0)
 
-note = random.choice(notes)
-content = note.read_text()
+note_path = random.choice(notes)
+note_text = note_path.read_text(encoding="utf-8")
 
-system_message = (
-    'You are a helpful assistant who reviews lecture notes in computer '
-    'science. From the provided note, produce advice in Japanese about one '
-    'of the following: correcting mistakes with references, suggesting next '
-    'topics to study, or providing advanced materials beyond the current '
-    'scope. Respond in JSON with "title" and "body" fields.'
+system_prompt = (
+    "あなたはコンピュータサイエンスの講義ノートをレビューする有能なアシスタントです。\n"
+    "以下のノートを読み、次のいずれか 1 つについて **日本語** で助言を行い、"
+    '必ず JSON 形式 {"title": "...", "body": "..."} で出力してください。\n'
+    "1. 誤りの訂正と参考文献を示す\n"
+    "2. 次に学ぶべきトピックを提案する\n"
+    "3. 現在の範囲を超えた発展的な資料を紹介する"
 )
-user_message = f'Note path: {note}\n\n{content}'
 
-payload = {
-    'model': os.getenv('OPENAI_MODEL', 'gpt-4.1'),
-    'messages': [
-        {'role': 'system', 'content': system_message},
-        {'role': 'user', 'content': user_message}
+user_prompt = f"Note path: {note_path}\n\n{note_text}"
+
+client = genai.Client(api_key=os.environ["AI_STUDIO_API_KEY"])
+
+response = client.models.generate_content(
+    model="gemini-2.5-flash-preview",
+    contents=[
+        {"role": "system", "parts": system_prompt},
+        {"role": "user", "parts": user_prompt},
     ],
-    'temperature': 0.5
-}
-
-client = OpenAI(api_key=os.environ['OPENAI_API_KEY'])
-response = client.chat.completions.create(
-    model=payload['model'],
-    messages=payload['messages'],
-    temperature=payload['temperature'],
+    generation_config={"temperature": 0.5},
 )
-message = response.choices[0].message.content
 
-
-issue = json.loads(message)
+issue_json = json.loads(response.text.strip())
 
 subprocess.run(
     [
-        'gh',
-        'issue',
-        'create',
-        '--title',
-        issue['title'],
-        '--body',
-        issue['body'],
+        "gh",
+        "issue",
+        "create",
+        "--title",
+        issue_json["title"],
+        "--body",
+        issue_json["body"],
     ],
     check=True,
 )
+
