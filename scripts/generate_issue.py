@@ -23,7 +23,7 @@ system_instr = (
 prompt = f"Note path: {note_path}\n\n{note_text}"
 
 response = client.models.generate_content(
-    model="gemini-2.5-flash-preview",
+    model="gemini-2.5-flash-preview-05-20",
     contents=[prompt],
     config=types.GenerateContentConfig(
         system_instruction=system_instr,
