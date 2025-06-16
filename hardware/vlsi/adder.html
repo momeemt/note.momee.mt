@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>D-FF - note.momee.mt</title>
+        <title>加算器 - note.momee.mt</title>
 
 
         <!-- Custom HTML head -->
@@ -167,50 +167,38 @@
                 <div id="content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="d-ff"><a class="header" href="#d-ff">D-FF</a></h1>
-<p>1ビットの情報を記憶できる論理回路を<strong>フリップフロップ</strong>という。
-D-FFはクロックが立ち上がり（立ち下り）に同期する（立ち上がるか、あるいは立ち下る時に入力を記憶する）。
-クロック遷移以外のタイミングで入力が変化しても、記憶は上書きされない。</p>
-<h2 id="マスタースレーブ型"><a class="header" href="#マスタースレーブ型">マスタースレーブ型</a></h2>
-<h3 id="内部構造"><a class="header" href="#内部構造">内部構造</a></h3>
-<p><img src="./figs/d-ff.jpeg" alt="D-FFの内部構造" /></p>
-<p>セレクタはトランスミッションゲート2つとNOTゲート1つによって構成できる。
-また、クロックの位相を変える（master側のセレクタとslave側のセレクタに入力するクロックを逆にする）と、上の図では立ち下り時に同期するが、立ち上り時に同期するように変えることができる。
-実際の設計では立ち上り同期型を使う機会の方が多い。</p>
-<h3 id="制約"><a class="header" href="#制約">制約</a></h3>
-<p>D-FFが入力を記憶するために、2つの時間的制約がある。</p>
+<h1 id="加算器"><a class="header" href="#加算器">加算器</a></h1>
+<p>加算器は最も基本的な回路で、減算は2の補数の加算として、乗算は加算の繰り返しで、除算は減算の繰り返しで計算できるので、加算器を高速化することで、四則演算すべてを高速化することができる。</p>
+<h2 id="半加算器-half-adder"><a class="header" href="#半加算器-half-adder">半加算器 (half adder)</a></h2>
+<p>2進数の加算を行う論理回路で、繰り上がりを考慮せず単に2つの和を求める。</p>
+<h2 id="全加算器-full-adder"><a class="header" href="#全加算器-full-adder">全加算器 (full adder)</a></h2>
+<p>2進数の加算を行う論理回路で、下の桁からのくり上がりを考慮して3つの和を求める。
+CMOSではANDゲートやORゲートを直接実装することは非効率的。XORゲートはトランスミッションゲートとNOTゲートで実装できるので、ANDゲートやORゲートをNANDゲートやNORゲートで置き換えることで実装する。</p>
+<h3 id="rc遅延モデルによる全加算器の遅延の計算"><a class="header" href="#rc遅延モデルによる全加算器の遅延の計算">RC遅延モデルによる全加算器の遅延の計算</a></h3>
+<p>2入力以上のゲートではRC遅延モデルは煩雑になり計算が難しい。</p>
+<h3 id="単位遅延による遅延の計算"><a class="header" href="#単位遅延による遅延の計算">単位遅延による遅延の計算</a></h3>
+<p>CMOSゲート1個あたりの伝播遅延を1と仮定する。
+ゲートの規模や複雑さによらず遅延は全て同じだとみなすことで、おおよその回路の伝播遅延を求める。</p>
 <ul>
-<li>セットアップ時間 (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord text"><span class="mord">tsu</span></span></span></span></span>)
+<li>XORゲート
 <ul>
-<li>正常に記憶するためにクロックの立ち上がり時刻より前に入力を確定させておかなければならないが、その最小時間</li>
+<li>NOTゲートとトランスミッションゲートから成る</li>
+<li>単位遅延は2</li>
 </ul>
 </li>
-<li>ホールド時間（<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">tsh</span></span></span></span></span>）
-<ul>
-<li>クロック立ち上がり後に入力を変えてはならない最小時間</li>
+<li>出力の遅延は最大でXORゲートを2つ通過するから単位遅延は4</li>
+<li>桁上がり出力の遅延はXORゲートとNANDゲート2つを通過するから同じく単位遅延は4</li>
 </ul>
-</li>
-</ul>
-<p>立ち上がりに同期するD-FFでは、出力が確定するのに入力から取り込まれた値がmasterラッチを通り、立ち上がり時にslave側セレクタによってセレクトされ、2つのNOTゲートを通過した後になる。
-slave側セレクタが動作する = 立ち上がる前に、入力がmasterラッチを通過していなければいけない。したがって、そのmasterラッチの伝播遅延分だけセットアップ時間として確保しなければならない。マスタースレーブ型のD-FFのセットアップ時間は、少なくともクロック周期の半分になる。
-また、NOTゲートの伝播遅延とセレクタ切り替わり時間の間に入力が変化すると、変化後の値がslaveに記憶されてしまうため、ホールド時間を確保しなければならない。</p>
-<h2 id="エッジトリガ型"><a class="header" href="#エッジトリガ型">エッジトリガ型</a></h2>
-<h3 id="内部構造-1"><a class="header" href="#内部構造-1">内部構造</a></h3>
-<p><img src="./figs/edge-trigger-d-ff.jpeg" alt="エッジトリガ型D-FFの挙動" /></p>
-<p><a href="./latch.html#s%CB%89r%CB%89%E3%83%A9%E3%83%83%E3%83%81">SRラッチ</a>を使う。
-<code>CLK = 0</code>のとき、<code>P1 = H</code>かつ<code>P2 = H</code>であるから、SRラッチは保持状態になり、入力に依らない。
-CLKが立ち上がるとき、入力を記憶する。立ち上がり後に入力を変化させても、SRラッチの入力に変化はないので、記憶内容に影響しない。</p>
-<p>マスタースレーブ型と異なり、セットアップ時間がクロック半周より短くても機能するので、周波数を大きくしたい場合などはエッジトリガ型のD-FFを用いる。</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../hardware/digital-logic/latch.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../hardware/vlsi/electronic-properties.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../../hardware/vlsi/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../papers/ieee/8330201.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -220,11 +208,11 @@ CLKが立ち上がるとき、入力を記憶する。立ち上がり後に入�
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../hardware/digital-logic/latch.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../hardware/vlsi/electronic-properties.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../../hardware/vlsi/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../papers/ieee/8330201.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
