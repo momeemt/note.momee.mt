@@ -17,19 +17,25 @@
 
 ## ログ
 
+### 2025/06/10
+- [x] [ocamlPackages.ancient: init at 0.10.0](https://github.com/NixOS/nixpkgs/pull/415530)
+- [ ] [ocamlPackages.amqp-client: init at 2.3.0](https://github.com/NixOS/nixpkgs/pull/415510)
+
 ### 2025/06/09
 - [ ] [ocamlPackages.kcas: 0.6.1 -> 0.7.0](https://github.com/NixOS/nixpkgs/pull/415137)
-- [ ] [ocamlPackages.{landmarks, landmarks-ppx}: 1.4 -> 1.5](https://github.com/NixOS/nixpkgs/pull/415138)
+- [x] [ocamlPackages.{landmarks, landmarks-ppx}: 1.4 -> 1.5](https://github.com/NixOS/nixpkgs/pull/415138)
 - [ ] [ocamlPackages.mmap: 1.1.0 -> 1.2.0](https://github.com/NixOS/nixpkgs/pull/415186)
+    - `useDune2`は古いので削除
 
 ### 2025/06/08
-- [ ] [ocamlPackages.dum: 1.0.1 -> 1.0.3](https://github.com/NixOS/nixpkgs/pull/414913)
+- [x] [ocamlPackages.dum: 1.0.1 -> 1.0.3](https://github.com/NixOS/nixpkgs/pull/414913)
+    - `substituteInPlace`に対するオプション`--replace`は非推奨になったので、`--replace-fail`などの[オプション](https://nixos.org/manual/nixpkgs/stable/#fun-substitute)を使う。[ref](https://github.com/NixOS/nixpkgs/pull/414913#discussion_r2140294804)
 - [ ] [ocamlPackages.eigen: 0.2.0 -> 0.3.3](https://github.com/NixOS/nixpkgs/pull/414921)
 
 ### 2025/06/07
-- [ ] [ocamlPackages.mirage-crypto: 1.2.0 -> 2.0.1](https://github.com/NixOS/nixpkgs/pull/414541)
+- [x] [ocamlPackages.mirage-crypto: 1.2.0 -> 2.0.1](https://github.com/NixOS/nixpkgs/pull/414541)
 - [ ] [ocamlPackages.awa: 0.5.1 -> 0.5.2](https://github.com/NixOS/nixpkgs/pull/414639)
-- [ ] [ocamlPackages.benchmark: 1.6 -> 1.7](https://github.com/NixOS/nixpkgs/pull/414669)
+- [x] [ocamlPackages.benchmark: 1.6 -> 1.7](https://github.com/NixOS/nixpkgs/pull/414669)
 - [ ] [ocamlPackages.bitwuzla-cxx: 0.6.1 -> 0.8.0](https://github.com/NixOS/nixpkgs/pull/414671)
 - [ ] [ocamlPackages.cow: 2.4.0 -> 2.5.0](https://github.com/NixOS/nixpkgs/pull/414675)
 - [ ] [ocamlPackages.directories: 0.5 -> 0.6](https://github.com/NixOS/nixpkgs/pull/414677)
@@ -39,6 +45,7 @@
 
 ### 2025/06/05
 - [ ] [ocamlPackages.lua-ml: 0.9.2 -> 0.9.4](https://github.com/NixOS/nixpkgs/pull/414245)
+    - `odoc`はドキュメント生成のみに必要（`with-doc`）なので、`buildPhase`には必要ないことがある
 
 ### 2025/06/04
 - [x] [ocamlPackages.wasm: 2.0.1 -> 2.0.2](https://github.com/NixOS/nixpkgs/pull/413741)
