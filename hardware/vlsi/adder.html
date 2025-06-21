@@ -187,8 +187,23 @@ CMOSではANDゲートやORゲートを直接実装することは非効率的�
 </ul>
 </li>
 <li>出力の遅延は最大でXORゲートを2つ通過するから単位遅延は4</li>
-<li>桁上がり出力の遅延はXORゲートとNANDゲート2つを通過するから同じく単位遅延は4</li>
+<li>桁上がり出力の遅延はXORゲートとNANDゲート2つを通過するから同じく単位遅延は4
+<ul>
+<li>AOI21を複合ゲートで実装することにより、単位遅延を2に抑えられる</li>
 </ul>
+</li>
+</ul>
+<h2 id="桁上伝播加算器"><a class="header" href="#桁上伝播加算器">桁上伝播加算器</a></h2>
+<p>最も基本的な加算器。
+必要な桁数だけ全加算器を並べ、下位桁の桁揚げ出力を上位桁に繋げたもので、2進数の筆算をそのまま回路にしたらこうなる。</p>
+<p>伝播遅延は <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> で、回路規模も全加算器がn個繋がったものであるから <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> 。
+最下位桁の全加算器に繋がる桁上げ入力は非負整数の加算の範囲では不要だが、減算器に拡張する際に必要になる。</p>
+<p>桁上伝播加算器のクリティカルパスは桁上げ伝播であり、これをできるだけ減らすのが目標になる。</p>
+<h2 id="桁上選択加算器"><a class="header" href="#桁上選択加算器">桁上選択加算器</a></h2>
+<p>桁を上半分とした半分に分けて、独立に加算を実行する。
+上半分は、桁上げ入力が0の場合と1の場合を並列にどちらも計算しておき、確定したらセレクタでどちらかの結果を選択する。
+桁上伝播加算器に比べると、遅延は約半分になる。
+セレクタ間の桁上げ伝播は逐次的なままなので、分割数を増やせば増やすほど高速になるわけではない。</p>
 
                     </main>
 

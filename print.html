@@ -459,6 +459,12 @@ Metal Oxide Semiconductorの略。
 <li>ゲートにLレベルを与えるとONになる</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="aoi21"><a class="header" href="#aoi21">AOI21</a></h1>
+<p>入力側からANDゲート、ORゲート、NOTゲートが直列につながっているゲートをAOI: AND-OR-INVERTERという。
+「21」は、入力がANDへの2本と、残りの1本であることから。</p>
+<p><img src="hardware/vlsi/./fig/aoi21.png" alt="AOI21" /></p>
+<p>ゲートで実装した場合には単位遅延モデルで3段かかるが、複合ゲートによって実装することで1段に抑えることができる。</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="vlsiの分類"><a class="header" href="#vlsiの分類">VLSIの分類</a></h1>
 <h2 id="pld"><a class="header" href="#pld">PLD</a></h2>
 <p>Programmable Logic Deviceの略。
@@ -515,40 +521,27 @@ CMOSではANDゲートやORゲートを直接実装することは非効率的�
 </ul>
 </li>
 <li>出力の遅延は最大でXORゲートを2つ通過するから単位遅延は4</li>
-<li>桁上がり出力の遅延はXORゲートとNANDゲート2つを通過するから同じく単位遅延は4</li>
+<li>桁上がり出力の遅延はXORゲートとNANDゲート2つを通過するから同じく単位遅延は4
+<ul>
+<li>AOI21を複合ゲートで実装することにより、単位遅延を2に抑えられる</li>
 </ul>
+</li>
+</ul>
+<h2 id="桁上伝播加算器"><a class="header" href="#桁上伝播加算器">桁上伝播加算器</a></h2>
+<p>最も基本的な加算器。
+必要な桁数だけ全加算器を並べ、下位桁の桁揚げ出力を上位桁に繋げたもので、2進数の筆算をそのまま回路にしたらこうなる。</p>
+<p>伝播遅延は <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> で、回路規模も全加算器がn個繋がったものであるから <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span> 。
+最下位桁の全加算器に繋がる桁上げ入力は非負整数の加算の範囲では不要だが、減算器に拡張する際に必要になる。</p>
+<p>桁上伝播加算器のクリティカルパスは桁上げ伝播であり、これをできるだけ減らすのが目標になる。</p>
+<h2 id="桁上選択加算器"><a class="header" href="#桁上選択加算器">桁上選択加算器</a></h2>
+<p>桁を上半分とした半分に分けて、独立に加算を実行する。
+上半分は、桁上げ入力が0の場合と1の場合を並列にどちらも計算しておき、確定したらセレクタでどちらかの結果を選択する。
+桁上伝播加算器に比べると、遅延は約半分になる。
+セレクタ間の桁上げ伝播は逐次的なままなので、分割数を増やせば増やすほど高速になるわけではない。</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="桁上げ先見加算器"><a class="header" href="#桁上げ先見加算器">桁上げ先見加算器</a></h1>
 <p>各桁の桁上げ入力を全て一斉に計算する加算器。
 CLA: Carry-lookagead adder。</p>
-<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="automatically-repairing-dependency-related-build-breakage"><a class="header" href="#automatically-repairing-dependency-related-build-breakage">Automatically Repairing Dependency-Related Build Breakage</a></h1>
-<ul>
-<li>論文リンク: <a href="https://ieeexplore.ieee.org/document/8330201">Automatically repairing dependency-related build breakage</a></li>
-<li>読んだ日: 2025/06/16</li>
-</ul>
-<h2 id="何"><a class="header" href="#何">何</a></h2>
-<ul>
-<li><a href="https://maven.apache.org/">Maven</a>（Javaのビルドツール）の依存関係によるビルドエラーを自動で修復するツールの提案</li>
-<li>自動修復のための3戦略
-<ul>
-<li>バージョン更新</li>
-<li>依存性の削除</li>
-<li>リポジトリの追加</li>
-</ul>
-</li>
-<li>ツールにより、84のビルドエラーが発生するパッケージのうち、45個（54%）を自動修復できた</li>
-</ul>
-<p>リサーチクエスチョンを2つ立てている</p>
-<ol>
-<li>開発者はどうやって依存関係のビルドエラーを直しているのか？</li>
-<li>依存関係のビルドエラーを自動修復できるのか？</li>
-</ol>
-<h2 id="先行研究との比較"><a class="header" href="#先行研究との比較">先行研究との比較</a></h2>
-<h2 id="本質的な貢献"><a class="header" href="#本質的な貢献">本質的な貢献</a></h2>
-<h2 id="実験方法"><a class="header" href="#実験方法">実験方法</a></h2>
-<h2 id="議論"><a class="header" href="#議論">議論</a></h2>
-<h2 id="次に読むべき論文"><a class="header" href="#次に読むべき論文">次に読むべき論文</a></h2>
 
                     </main>
 
