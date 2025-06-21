@@ -1,8 +1,7 @@
 name: Note Review
-
 on:
-#  schedule:
-#    - cron: '0 15 * * *'
+  schedule:
+    - cron: '0 15 * * *'
   workflow_dispatch:
 
 jobs:
@@ -13,11 +12,7 @@ jobs:
       issues: write
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: momeemt/senpai/actions/senpai@main
         with:
-          python-version: '3.x'
-      - run: pip install openai
-      - run: python scripts/generate_issue.py
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          gemini_api_key: ${{ secrets.AI_STUDIO_API_KEY }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
