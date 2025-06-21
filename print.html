@@ -518,7 +518,37 @@ CMOSではANDゲートやORゲートを直接実装することは非効率的�
 <li>桁上がり出力の遅延はXORゲートとNANDゲート2つを通過するから同じく単位遅延は4</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="20250615-automatically-repairing-dependency-related-build-breakage"><a class="header" href="#20250615-automatically-repairing-dependency-related-build-breakage">2025/06/15: Automatically Repairing Dependency-Related Build Breakage</a></h1>
+<h1 id="桁上げ先見加算器"><a class="header" href="#桁上げ先見加算器">桁上げ先見加算器</a></h1>
+<p>各桁の桁上げ入力を全て一斉に計算する加算器。
+CLA: Carry-lookagead adder。</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="automatically-repairing-dependency-related-build-breakage"><a class="header" href="#automatically-repairing-dependency-related-build-breakage">Automatically Repairing Dependency-Related Build Breakage</a></h1>
+<ul>
+<li>論文リンク: <a href="https://ieeexplore.ieee.org/document/8330201">Automatically repairing dependency-related build breakage</a></li>
+<li>読んだ日: 2025/06/16</li>
+</ul>
+<h2 id="何"><a class="header" href="#何">何</a></h2>
+<ul>
+<li><a href="https://maven.apache.org/">Maven</a>（Javaのビルドツール）の依存関係によるビルドエラーを自動で修復するツールの提案</li>
+<li>自動修復のための3戦略
+<ul>
+<li>バージョン更新</li>
+<li>依存性の削除</li>
+<li>リポジトリの追加</li>
+</ul>
+</li>
+<li>ツールにより、84のビルドエラーが発生するパッケージのうち、45個（54%）を自動修復できた</li>
+</ul>
+<p>リサーチクエスチョンを2つ立てている</p>
+<ol>
+<li>開発者はどうやって依存関係のビルドエラーを直しているのか？</li>
+<li>依存関係のビルドエラーを自動修復できるのか？</li>
+</ol>
+<h2 id="先行研究との比較"><a class="header" href="#先行研究との比較">先行研究との比較</a></h2>
+<h2 id="本質的な貢献"><a class="header" href="#本質的な貢献">本質的な貢献</a></h2>
+<h2 id="実験方法"><a class="header" href="#実験方法">実験方法</a></h2>
+<h2 id="議論"><a class="header" href="#議論">議論</a></h2>
+<h2 id="次に読むべき論文"><a class="header" href="#次に読むべき論文">次に読むべき論文</a></h2>
 
                     </main>
 
