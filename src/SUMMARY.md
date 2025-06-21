@@ -19,6 +19,7 @@
         - [VLSIの分類](./hardware/vlsi/class.md)
         - [電気的特性と高速化](./hardware/vlsi/electronic-properties.md)
         - [加算器](./hardware/vlsi/adder.md)
+        - [桁上げ先見加算器](./hardware/vlsi/carry-lookahead-adder.md)
 - [論文]()
     - [2025/06/15: Automatically Repairing Dependency-Related Build Breakage](./papers/ieee/8330201.md)
 
