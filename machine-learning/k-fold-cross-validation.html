@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>NixOSでフォントが読み込めないとき - note.momee.mt</title>
+        <title>K-fold交差検証 - note.momee.mt</title>
 
 
         <!-- Custom HTML head -->
@@ -167,22 +167,24 @@
                 <div id="content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="nixosでフォントが読み込めないとき"><a class="header" href="#nixosでフォントが読み込めないとき">NixOSでフォントが読み込めないとき</a></h1>
-<p><code>fc-cache -rv</code></p>
-<h2 id="詳細"><a class="header" href="#詳細">詳細</a></h2>
-<p>uguisu側で修正したnix-configurationsをoshidori側で反映させたらAlacrittyがnerd-fontsを読み込めないと怒ってきた。実際にnvim-treeのアイコンが表示されなくなっていた。
-<a href="https://github.com/nix-community/home-manager/issues/6160">nix-community/home-manager #6160</a>を読んだら解決した。
-どうやら<code>home-manager switch</code>だけではフォントのリロードが行われないよう。</p>
+<h1 id="k-fold交差検証"><a class="header" href="#k-fold交差検証">K-fold交差検証</a></h1>
+<p>偏りの大きい事例が訓練事例に集中すると、学習モデルの偏りも大きくなってしまうため、
+様々な分割パターンで学習を行ってできるだけ偏りを少なくする手法。</p>
+<ol>
+<li>事例を<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>個に分割する</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6595em;"></span><span class="mord mathnormal">i</span></span></span></span>番目の分割をテスト事例として、残る<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1</span></span></span></span>個を訓練事例としてテスト誤差を評価する</li>
+<li>全てのfoldのテスト誤差を平均し、これを汎化誤差の推定値として出力する</li>
+</ol>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../nix/nixpkgs-review-log.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../machine-learning/regression-errors.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../machine-learning/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../machine-learning/regularization.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -192,11 +194,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../nix/nixpkgs-review-log.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../machine-learning/regression-errors.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../machine-learning/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../machine-learning/regularization.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

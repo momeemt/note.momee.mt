@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>NixOSでフォントが読み込めないとき - note.momee.mt</title>
+        <title>画像の特徴ベクトル化 - note.momee.mt</title>
 
 
         <!-- Custom HTML head -->
@@ -167,22 +167,26 @@
                 <div id="content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="nixosでフォントが読み込めないとき"><a class="header" href="#nixosでフォントが読み込めないとき">NixOSでフォントが読み込めないとき</a></h1>
-<p><code>fc-cache -rv</code></p>
-<h2 id="詳細"><a class="header" href="#詳細">詳細</a></h2>
-<p>uguisu側で修正したnix-configurationsをoshidori側で反映させたらAlacrittyがnerd-fontsを読み込めないと怒ってきた。実際にnvim-treeのアイコンが表示されなくなっていた。
-<a href="https://github.com/nix-community/home-manager/issues/6160">nix-community/home-manager #6160</a>を読んだら解決した。
-どうやら<code>home-manager switch</code>だけではフォントのリロードが行われないよう。</p>
+<h1 id="画像の特徴ベクトル化"><a class="header" href="#画像の特徴ベクトル化">画像の特徴ベクトル化</a></h1>
+<p>認識対象について、必要な情報を残し、不要な情報を削除する。</p>
+<h2 id="輝度値特徴"><a class="header" href="#輝度値特徴">輝度値特徴</a></h2>
+<p>アピアランスベース画像認識と呼ばれる、画像の見え方をそのまま用いる手法。
+(画素 x 画素)次元特徴ベクトルになる。
+顔の見え方そのものが必要で、画像の明るさは不要な顔認識などに用いられる。</p>
+<h2 id="高次局所自己相関特徴hlac"><a class="header" href="#高次局所自己相関特徴hlac">高次局所自己相関特徴（HLAC）</a></h2>
+<p>各画素において、マスクの灰色の箇所と重なる画素値の積を計算し、画面全体に走査してその和を計算する。
+画像のサイズに依らず25次元特徴ベクトルとなる。
+見え方、色、形状、個数が必要で、物体の位置が不要な物体認識などに用いられる。</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../nix/nixpkgs-review-log.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../machine-learning/document.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../machine-learning/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../machine-learning/convex-programming-problem.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -192,11 +196,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../nix/nixpkgs-review-log.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../machine-learning/document.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../machine-learning/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../machine-learning/convex-programming-problem.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

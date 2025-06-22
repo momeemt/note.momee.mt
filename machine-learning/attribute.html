@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>NixOSでフォントが読み込めないとき - note.momee.mt</title>
+        <title>データの種類 - note.momee.mt</title>
 
 
         <!-- Custom HTML head -->
@@ -167,22 +167,32 @@
                 <div id="content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="nixosでフォントが読み込めないとき"><a class="header" href="#nixosでフォントが読み込めないとき">NixOSでフォントが読み込めないとき</a></h1>
-<p><code>fc-cache -rv</code></p>
-<h2 id="詳細"><a class="header" href="#詳細">詳細</a></h2>
-<p>uguisu側で修正したnix-configurationsをoshidori側で反映させたらAlacrittyがnerd-fontsを読み込めないと怒ってきた。実際にnvim-treeのアイコンが表示されなくなっていた。
-<a href="https://github.com/nix-community/home-manager/issues/6160">nix-community/home-manager #6160</a>を読んだら解決した。
-どうやら<code>home-manager switch</code>だけではフォントのリロードが行われないよう。</p>
+<h1 id="データの属性"><a class="header" href="#データの属性">データの属性</a></h1>
+<p>データはいくつかの属性に分類することができる。
+機械学種で扱う際には順序属性やカテゴリカル属性も数値属性に変換する。</p>
+<h2 id="数値属性"><a class="header" href="#数値属性">数値属性</a></h2>
+<p>スカラやベクトルで表現できる属性。
+年齢や実行時間。</p>
+<h2 id="順序属性"><a class="header" href="#順序属性">順序属性</a></h2>
+<p>順序関係を持つ属性。
+成績評価（A+ &gt; A &gt; B &gt; C &gt; D）など。</p>
+<p>順序を保存したスカラ値に変換する。</p>
+<h2 id="カテゴリカル属性"><a class="header" href="#カテゴリカル属性">カテゴリカル属性</a></h2>
+<p>順序関係を持たない属性。
+血液型など。</p>
+<p>1-of-k変換（one-hot encoding）を行う。
+たとえば血液型なら、A型は<code>(1, 0, 0, 0)</code>、B型は<code>(0, 1, 0, 0)</code>、O型は<code>(0, 0, 1, 0)</code>、AB型は<code>(0, 0, 0, 1)</code>。
+すなわち、属性値がN種類あるとき、<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> となる。</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../nix/nixpkgs-review-log.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../machine-learning/liner-regression.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../machine-learning/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../machine-learning/data-preprocessing.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -192,11 +202,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../nix/nixpkgs-review-log.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../machine-learning/liner-regression.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../machine-learning/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../machine-learning/data-preprocessing.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

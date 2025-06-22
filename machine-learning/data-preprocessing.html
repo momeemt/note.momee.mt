@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>NixOSでフォントが読み込めないとき - note.momee.mt</title>
+        <title>前処理 - note.momee.mt</title>
 
 
         <!-- Custom HTML head -->
@@ -167,22 +167,36 @@
                 <div id="content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="nixosでフォントが読み込めないとき"><a class="header" href="#nixosでフォントが読み込めないとき">NixOSでフォントが読み込めないとき</a></h1>
-<p><code>fc-cache -rv</code></p>
-<h2 id="詳細"><a class="header" href="#詳細">詳細</a></h2>
-<p>uguisu側で修正したnix-configurationsをoshidori側で反映させたらAlacrittyがnerd-fontsを読み込めないと怒ってきた。実際にnvim-treeのアイコンが表示されなくなっていた。
-<a href="https://github.com/nix-community/home-manager/issues/6160">nix-community/home-manager #6160</a>を読んだら解決した。
-どうやら<code>home-manager switch</code>だけではフォントのリロードが行われないよう。</p>
+<h1 id="前処理"><a class="header" href="#前処理">前処理</a></h1>
+<p>機械学習で扱うデータを前処理する方法にはいくつか種類がある。</p>
+<h2 id="欠損値"><a class="header" href="#欠損値">欠損値</a></h2>
+<ul>
+<li>欠損値を含むサンプルを除去する</li>
+<li>欠損値はその特徴の平均値や中間値で補完する</li>
+</ul>
+<h2 id="外れ値"><a class="header" href="#外れ値">外れ値</a></h2>
+<ul>
+<li>全体を俯瞰し、極端な外れ値を含むサンプルを除去する
+<ul>
+<li>測定エラーや入力ミス、例外の可能性があるため</li>
+</ul>
+</li>
+</ul>
+<h2 id="スケーリング"><a class="header" href="#スケーリング">スケーリング</a></h2>
+<ul>
+<li>各特徴が平均0、標準偏差1になるようにスケーリングする</li>
+<li>最大値が1、最小値が0になるようにスケーリングする</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../nix/nixpkgs-review-log.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../machine-learning/attribute.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../machine-learning/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../machine-learning/document.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -192,11 +206,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../nix/nixpkgs-review-log.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../machine-learning/attribute.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../machine-learning/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../machine-learning/document.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

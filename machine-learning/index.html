@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>NixOSでフォントが読み込めないとき - note.momee.mt</title>
+        <title>機械学習 - note.momee.mt</title>
 
 
         <!-- Custom HTML head -->
@@ -167,22 +167,76 @@
                 <div id="content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="nixosでフォントが読み込めないとき"><a class="header" href="#nixosでフォントが読み込めないとき">NixOSでフォントが読み込めないとき</a></h1>
-<p><code>fc-cache -rv</code></p>
-<h2 id="詳細"><a class="header" href="#詳細">詳細</a></h2>
-<p>uguisu側で修正したnix-configurationsをoshidori側で反映させたらAlacrittyがnerd-fontsを読み込めないと怒ってきた。実際にnvim-treeのアイコンが表示されなくなっていた。
-<a href="https://github.com/nix-community/home-manager/issues/6160">nix-community/home-manager #6160</a>を読んだら解決した。
-どうやら<code>home-manager switch</code>だけではフォントのリロードが行われないよう。</p>
+<h1 id="機械学習"><a class="header" href="#機械学習">機械学習</a></h1>
+<h2 id="種類"><a class="header" href="#種類">種類</a></h2>
+<ul>
+<li>教師あり学習
+<ul>
+<li>予測対象が連続値
+<ul>
+<li>回帰</li>
+<li>推薦</li>
+</ul>
+</li>
+<li>予測対象が離散値
+<ul>
+<li>分類</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>教師なし学習
+<ul>
+<li>予測対象が連続値
+<ul>
+<li>次元削減</li>
+<li>主成分分析</li>
+</ul>
+</li>
+<li>予測対象が離散値
+<ul>
+<li>クラスタリング</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>教師付き学習ではデータとラベルを持つ既知事例から、データのみを持つ未知事例のラベルを予測する。</p>
+<h2 id="todo"><a class="header" href="#todo">TODO</a></h2>
+<p>以下は、勉強中に出てきたがまだ調べていないこと</p>
+<ul>
+<li>方向統計学（Directional statistics）
+<ul>
+<li>方角のような通常の実数とは異なる連続性を持つ仕組みのための統計</li>
+<li>コンパクトなリーマン多様体の性質を扱う
+<ul>
+<li>？</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>CMA-ES
+<ul>
+<li><a href="https://www.jstage.jst.go.jp/article/isciesci/60/7/60_292/_pdf">秋本先生の解説論文</a></li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2392em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0448em;"><span style="top:-2.5834em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">σ</span></span></span><span style="top:-3.2198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight">t</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1166em;"><span></span></span></span></span></span></span></span></span></span> の係数が何を意味しているかわかると面白い（うえかん談）</li>
+</ul>
+</li>
+<li>テンソル積
+<ul>
+<li>https://manabitimes.jp/math/1845</li>
+</ul>
+</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../nix/nixpkgs-review-log.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../nix/font-loading.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../machine-learning/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../machine-learning/mse.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -192,11 +246,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../nix/nixpkgs-review-log.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../nix/font-loading.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../machine-learning/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../machine-learning/mse.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
