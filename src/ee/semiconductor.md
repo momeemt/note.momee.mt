@@ -12,3 +12,70 @@
     - ダイオード、トランジスタ、FETなどの半導体素子の材料
 - 不純物が含まれない半導体を**真性半導体**という
 
+## Y-パラメータ
+
+$$
+\begin{pmatrix}
+    i_1 \\
+    i_2
+\end{pmatrix}
+=
+\begin{pmatrix}
+    Y_{11} & Y_{12} \\
+    Y_{21} & Y_{22}
+\end{pmatrix}
+\begin{pmatrix}
+    v_1 \\
+    v_2
+\end{pmatrix}
+$$
+
+それぞれ、次のように計算できる。
+
+$$
+Y_{11} = \left.\frac{i_1}{v_1}\right|_{v_2 = 0}
+$$
+
+$$
+Y_{21} = \left.\frac{i_2}{v_1}\right|_{v_2 = 0}
+$$
+
+$$
+Y_{12} = \left.\frac{i_1}{v_2}\right|_{v_1 = 0}
+$$
+
+$$
+Y_{22} = \left.\frac{i_2}{v_2}\right|_{v_1 = 0}
+$$
+
+## ドレイン電流
+
+JFETのドレイン電流 $I_D$ は、以下の式で求められる。
+
+$$
+\begin{aligned}
+I_D &= I_{DSS} \left(1 - \frac{V_{GS}}{V_P}\right)^2 \\
+    &= I_{DSS} \left(1 - \frac{-I_D R_S}{V_P}\right)^2
+\end{aligned}
+$$
+
+また、JFETの性質から $I_D < I_{DSS}$ を満たす。
+
+## 最大許容コレクタ損失
+
+トランジスタが安全に発熱できる上限電力である最大許容コレクタ損失 $P_{C_{max}}$ は、次のように求められる。
+なお、$T_{j_{max}}$ はトランジスタの最大接合温度、$T_a$ は周囲温度、$\theta$ は放熱機の熱抵抗である。
+
+$$
+P_{C_{max}} = \frac{T_{j_{max}} - T_a}{\theta}
+$$
+
+
+## エミッタ抵抗
+
+エミッタ抵抗 $r_e$ は、エミッタに流れる直流電流 $I_E$ を用いて、次のように計算できる。
+
+$$
+r_e = \frac{26}{I_E}
+$$
+
