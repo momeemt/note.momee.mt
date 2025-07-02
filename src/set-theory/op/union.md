@@ -210,3 +210,12 @@ $$
 
 したがって、$\varnothing \cup A = A$ を示せた。
 ```
+
+教科書を読んでいたら {{fref:prop:union_absorption}}を使っても示せることが書かれていた。
+結構感動した。
+
+```admonish tip title="{{fref:prop:union_identity}} の証明② " collapsible=true
+任意の集合 $A$ に対して、$\varnothing \sub A$ であるから、
+{{fref:prop:union_absorption}}より、$\varnothing \sub A \Leftrightarrow \varnothing \cup A = A$。
+よって示された。
+```
