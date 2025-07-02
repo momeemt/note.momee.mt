@@ -7,6 +7,18 @@ title = "note.momee.mt"
 [preprocessor.katex]
 after = ["links"]
 
+[preprocessor.numthm]
+prefix = true
+custom_environments = [
+  ["cor",  "Corollary", "**"],  # 系
+  ["prop", "Proposition", "**"] # 命題
+]
+
+[preprocessor.admonish]
+command = "mdbook-admonish"
+assets_version = "3.0.3" # do not edit: managed by `mdbook-admonish install`
+
 [output.html]
 additional-js = ["assets/fzf.umd.js", "assets/elasticlunr.js"]
+additional-css = ["./mdbook-admonish.css"]
 
