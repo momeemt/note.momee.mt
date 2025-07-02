@@ -14,13 +14,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v31
-      - run: |
-          nix build .
-          mkdir -p book
-          mv ./result/book ./book
+      - run: nix build .
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: 'book'
+          folder: ./result/book
           branch: 'gh-pages'
           clean-exclude: 'pr-preview'
           force: false
