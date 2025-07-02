@@ -1,0 +1,377 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>和集合 - note.momee.mt</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../.././mdbook-admonish.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">note.momee.mt</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="和集合"><a class="header" href="#和集合">和集合</a></h1>
+<pre><code class="language-admonish title=&quot;{{def}}{def:union}[和集合]&quot;">
+2つの集合 $A, B$ が与えられたとき、$A$ の元と $B$ の元をすべて集めて得られる集合
+
+$$
+A \cup B = \{x \mid x \in A \lor x \in B\}
+$$
+
+を $A$ と $B$ の**和集合**という。
+</code></pre>
+<p>記号 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5556em;"></span><span class="mord">∪</span></span></span></span> は<strong>結び</strong>、join、cupなどと呼ばれる。
+たとえば、<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> を正の偶数全体の集合、<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> を正の奇数全体の集合とすると、<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∪</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6889em;"></span><span class="mord mathbb">N</span></span></span></span>。</p>
+<h2 id="基本的な性質"><a class="header" href="#基本的な性質">基本的な性質</a></h2>
+<h3 id="包含関係"><a class="header" href="#包含関係">包含関係</a></h3>
+<pre><code class="language-admonish title=&quot;{{prop}}{prop:union_subset}[和集合の包含関係]&quot;">$$
+A \sub A \cup B, \quad B \sub A \cup B
+$$
+</code></pre>
+<pre><code class="language-admonish tip title=&quot;{{fref:prop:union_subset}} の証明&quot; collapsible=true">$x \in A$ とする。
+{{fref:def:union}} から、$x \in A \cup B$ を満たす。
+$\forall_x (x \in A \to x \in A \cup B)$ が正しいから、{{fref:def:subset}} より、$A \sub A \cup B$ が示された。
+
+同様に、$x \in B$ から $x \in A \cup B$ が従い、$B \sub A \cup B$。$\square$
+</code></pre>
+<h3 id="上位集合閉包"><a class="header" href="#上位集合閉包">上位集合閉包</a></h3>
+<pre><code class="language-admonish title=&quot;{{prop}}{prop:union_superset}[和集合の上位集合閉包]&quot;">$$
+A \sub C, B \sub C \to A \cup B \sub C
+$$
+</code></pre>
+<pre><code class="language-admonish tip title=&quot;{{fref:prop:union_superset}} の証明&quot; collapsible=true">$x \in A \cup B$ とする。
+{{fref:def:union}} から、$x \in A$ または $x \in B$ が従う。
+$x \in A$ のとき、$A \sub C$ から $x \in C$ を満たす。
+同様に、$x \in B$ のとき、$x \in C$ を満たす。
+$x \in A \cup B \to x \in C$ が正しいから、{{fref:def:subset}} より、$A \sub C, B \sub C \to A \cup B \sub C$ が示された。$\square$
+</code></pre>
+<p>{{fref:prop:union_subset}} より、<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∪</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> は <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> と <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> をどちらも含む。
+また、{{fref:prop:union_superset}} より、<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span> も <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> も含む任意の集合は、<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∪</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> を含む。
+したがって、<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∪</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> は、<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">A</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span> の両方を含む最小の集合であると言える。</p>
+<h3 id="冪等律"><a class="header" href="#冪等律">冪等律</a></h3>
+<pre><code class="language-admonish title=&quot;{{prop}}{prop:union_idempotence}[和集合の冪等律]&quot;">$$
+A \cup A = A
+$$
+</code></pre>
+<pre><code class="language-admonish tip title=&quot;{{fref:prop:union_idempotence}} の証明&quot; collapsible=true">$x \in A \cup A$ とする。
+{{fref:def:union}} より、$x \in A$ または $x \in A$ が従う。
+よって、$x \in A \cup A \to x \in A$ から、$A \cup A \sub A$。
+また、$x \in A \to x \in A \cup A$ から、$A \sub A \cup A$。
+したがって、$A \cup A = A$。$\square$
+</code></pre>
+<h3 id="交換律"><a class="header" href="#交換律">交換律</a></h3>
+<pre><code class="language-admonish title=&quot;{{prop}}{prop:union_commutative}[和集合の交換律]&quot;">$$
+A \cup B = B \cup A
+$$
+</code></pre>
+<pre><code class="language-admonish tip title=&quot;{{fref:prop:union_commutative}} の証明&quot; collapsible=true">$x \in A \cup B$ とする。
+{{fref:def:union}}より、$x \in A$ または $x \in B$ が従う。
+
+$x \in A$ のとき、$x \in A \to x \in B \cup A$。
+
+$x \in B$ のとき、$x \in B \to x \in B \cup A$。
+
+よって、$x \in A \cup B \to x \in B \cup A$ であるから、$A \cup B \sub B \cup A$。
+
+同様に、$x \in B \cup A$ とすると、$x \in B \cup A \to x \in A \cup B$ が従う。
+よって、$B \cup A \sub A \cup B$。
+
+したがって、$A \cup B = B \cup A$。$\square$
+</code></pre>
+<h3 id="結合律"><a class="header" href="#結合律">結合律</a></h3>
+<pre><code class="language-admonish title=&quot;{{prop}}{prop:union_associative}[和集合の結合律]&quot;">$$
+(A \cup B) \cup C = A \cup (B \cup C)
+$$
+</code></pre>
+<pre><code class="language-admonish tip title=&quot;{{fref:prop:union_associative}} の証明&quot; collapsible=true">$x \in (A \cup B) \cup C$ とおく。
+{{fref:def:union}}より、$x \in A \cup B$ または $x \in C$ が従う。
+
+$x \in A$ または $x \in B$ または $x \in C$
+
+$\to x \in A$ または $x \in (B \cup C)$
+
+$\to x \in A \cup (B \cup C)$
+
+よって、$(A \cup B) \cup C \sub A \cup (B \cup C)$ が示せた。
+
+同様に、$x \in A \cup (B \cup C)$ とおくと、$x \in (A \cup B) \cup C$ が従うから、$(A \cup B) \cup C \supset A \cup (B \cup C)$ が示せた。
+
+したがって、$(A \cup B) \cup C = A \cup (B \cup C)$ が示された。$\square$
+</code></pre>
+<h3 id="結合律の一般化"><a class="header" href="#結合律の一般化">結合律の一般化</a></h3>
+<pre><code class="language-admonish title=&quot;{{prop}}{prop:union_associative_general}[和集合の結合律の一般化]&quot;">一般に、$n$ 個の集合 $A_1, A_2, \dots, A_n$ があるとき、$A_1 \cup A_2 \cup \cdots \cup A_n$ という表現のどこにどのような順序で括弧をつけても、結果として得られる集合は同じ
+</code></pre>
+<p>自分で書いた証明は証明になっていなかったのでチャッピーに教えてもらった。
+仮定を適用できる範囲が自分が思っていたより広かった。</p>
+<pre><code class="language-admonish tip title=&quot;{{fref:prop:union_associative_general}} の証明&quot; collapsible=true">任意の括弧の付け方をした式 $E_k = A_1 \cup A_2 \cup \cdots \cup A_k$ は、常に集合 $A_1 \cup \cdots \cup A_k$ に等しいと仮定する。
+
+任意の括弧付き表現 $E_{k+1}$ は $1 \le r \le k$ の下で、必ず $B = A_1 \cup \cdots \cup A_r$ と $C = A_{r+1} \cup \cdots \cup A_{k+1}$ を用いて、次のように表せる。
+
+$$
+E_{k + 1} = B \cup C
+$$
+
+仮定より、$B = A_1 \cup \cdots \cup A_r$ と $C = A_{r+1} \cup \cdots \cup A_{k+1}$ が成立するから、
+{{fref:prop:union_associative}}より、$E_{k+1}$ は括弧の付け方によらず結果は同じ集合となる。
+
+したがって、{{fref:prop:union_associative_general}}は数学的帰納法よりすべての $n$ で成り立つ。$\square$
+</code></pre>
+<p>結合律の一般化が成り立つので、括弧を省略して次のように表してよい。</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∪</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∪</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5556em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∪</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.9291em;vertical-align:-1.2777em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6514em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">⋃</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<h3 id="包含と和集合の同値命題"><a class="header" href="#包含と和集合の同値命題">包含と和集合の同値命題</a></h3>
+<pre><code class="language-admonish title=&quot;{{prop}}{prop:union_absorption}[包含と和集合の同値命題]&quot;">$$
+A \sub B \Leftrightarrow A \cup B = B
+$$
+</code></pre>
+<pre><code class="language-admonish tip title=&quot;{{fref:prop:union_absorption}} の証明&quot; collapsible=true">$A \sub B$ ならば、$A \sub B$ かつ $B \sub B$ であるから、
+{{fref:prop:union_superset}}より、$A \cup B \sub B$。
+また、{{fref:prop:union_subset}}より、$B \sub A \cup B$。
+よって、$A \cup B = B$ が成り立つ。
+
+また、$A \cup B = B$ ならば、{{fref:prop:union_subset}}より、$A \sub A \cup B$ であるから、$A \sub B$。
+よって、$A \sub B$ が成り立つ。
+
+したがって、{{fref:prop:union_absorption}}は示された。$\square$
+</code></pre>
+<h3 id="単調性"><a class="header" href="#単調性">単調性</a></h3>
+<pre><code class="language-admonish title=&quot;{{prop}}{prop:union_monotonicity}[和集合の単調性]&quot;">$$
+A \sub B \to A \cup C \sub B \cup C
+$$
+</code></pre>
+<pre><code class="language-admonish tip title=&quot;{{fref:prop:union_monotonicity}} の証明&quot; collapsible=true">{{fref:prop:union_absorption}}より、$A \sub B \Leftrightarrow A \cup B = B$。
+また、$A \cup B = B$ ならば、{{fref:prop:union_subset}}より、$A \sub A \cup B = B$。
+{{fref:prop:union_associative}}より、$A \cup C \sub A \cup B \cup C = B \cup C$。
+
+したがって、$A \sub B \to A \cup C \sub B \cup C$ が示された。
+</code></pre>
+<p>チャッピーがもっと賢い証明を教えてくれた。
+自分が書いた証明は嘘ではないけど冗長っぽい。</p>
+<pre><code class="language-admonish tip title=&quot;{{fref:prop:union_monotonicity}} の証明② &quot; collapsible=true">{{fref:prop:union_subset}}から、$C \sub B \cup C$。
+また仮定から、$A \sub B \sub B \cup C$。
+
+{{fref:prop:union_superset}}より、$A \cup C \sub B \cup C$ となり、示された。
+</code></pre>
+<p>かしこ！全く思いつかなかった。</p>
+<h3 id="恒等律"><a class="header" href="#恒等律">恒等律</a></h3>
+<pre><code class="language-admonish title=&quot;{{prop}}{prop:union_identity}[和集合の恒等律]&quot;">$$
+\varnothing \cup A = A
+$$
+</code></pre>
+<pre><code class="language-admonish tip title=&quot;{{fref:prop:union_identity}} の証明&quot; collapsible=true">{{fref:prop:union_associative}}より、示したい命題を $\varnothing \cup \varnothing \cup A = \varnothing \cup A$ に同値変形する。
+また、{{fref:prop:union_idempotence}}より、$\varnothing \cup \varnothing = \varnothing$。
+よって、示したい命題は $\varnothing \cup A = \varnothing \cup A$ に同値変形できるが、これは自明。
+
+したがって、$\varnothing \cup A = A$ を示せた。
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../set-theory/set.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../liner-algebra/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../set-theory/set.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../liner-algebra/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../assets/fzf.umd.js"></script>
+        <script src="../../assets/elasticlunr.js"></script>
+
+
+    </div>
+    </body>
+</html>
