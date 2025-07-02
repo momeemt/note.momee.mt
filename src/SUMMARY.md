@@ -8,6 +8,8 @@
     - [含意](./logic/implication.md)
 - [集合論](./set-theory/README.md)
     - [集合](./set-theory/set.md)
+    - [集合間の演算]()
+        - [和集合](./set-theory/op/union.md)
 - [線形代数](./liner-algebra/README.md)
     - [グラム・シュミットの正規直交化法](./liner-algebra/gso.md)
     - [スペクトル分類](./liner-algebra/spectral-decomposition.md)
