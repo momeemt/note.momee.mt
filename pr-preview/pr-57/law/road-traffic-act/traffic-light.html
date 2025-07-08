@@ -1,0 +1,383 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>信号 - note.momee.mt</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../.././mdbook-admonish.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">note.momee.mt</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="信号"><a class="header" href="#信号">信号</a></h1>
+<p>道路を通行する歩行者や車などは、信号機の表示する信号、または警察官や交通巡視員の手信号や灯火による信号に従って通行しなければならない。
+また、歩行者や車などは前方の信号に従わなければならない。</p>
+<h2 id="赤が右にある理由"><a class="header" href="#赤が右にある理由">赤が右にある理由</a></h2>
+<ul>
+<li>最も重要
+<ul>
+<li>道路の端から中央寄りに置くことで見やすくしている</li>
+<li>一般的にドライバーが右側に座っているので注意を促しやすい</li>
+<li>街路樹にかかりにくい</li>
+</ul>
+</li>
+</ul>
+<h2 id="灯火"><a class="header" href="#灯火">灯火</a></h2>
+<h3 id="青色の灯火"><a class="header" href="#青色の灯火">青色の灯火</a></h3>
+<p>歩行者や他の車などの状況が良ければ「進んでも良い」という意味。
+「進め」という意味ではない。</p>
+<ul>
+<li>歩行者は進むことができる</li>
+<li>軽車両を除く車や路面電車は、直進・左折・右折することができる
+<ul>
+<li>2段階の右折方法により右折する原動機付自転車は右折する地点まで直進し、その地点で向きを変え、進むべき方向の信号が青になるのを待つ
+<ul>
+<li>自転車と同じ</li>
+</ul>
+</li>
+<li>二段階右折をするタイミング
+<ul>
+<li>二段階右折の指示がある標識</li>
+<li>同一の方向に3つ以上の車両通行帯がある道路の交差点</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>軽車両は直進・左折することができる
+<ul>
+<li>右折するときは、右折する地点まで直進し、その地点で向きを変え、進むべき方向の信号が青になるのを待つ</li>
+</ul>
+</li>
+</ul>
+<h3 id="黄色の灯火"><a class="header" href="#黄色の灯火">黄色の灯火</a></h3>
+<p>基本的に停止しなければならない。
+交差点の直前など安全に停止できない時に限り、進んでも良い。</p>
+<ul>
+<li>歩行者は横断を始めてはいけない
+<ul>
+<li>速やかに横断を終わるか、横断をやめて引き返さなければならない</li>
+</ul>
+</li>
+<li>車や路面電車は先へ進んではいけない
+<ul>
+<li>黄に変わった時に停止位置に近づいていて、安全に停止できない場合はそのまま進むことができる</li>
+<li>安全に停止できない場合とは？
+<ul>
+<li>停止することで急ブレーキとなり、追突、スリップ、点灯、同乗者に対する危険などが予測される場合</li>
+<li>周囲を確認して判断する必要がある</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="赤色の灯火"><a class="header" href="#赤色の灯火">赤色の灯火</a></h3>
+<ul>
+<li>歩行者は横断してはならない</li>
+<li>車や路面電車は<strong>停止位置を超えて進んではいけない</strong></li>
+<li>交差点ですでに左折している車や路面電車は、左折方向の信号が赤でもそのまま進むことができる</li>
+<li>交差点ですでに右折している車や路面電車は、右折方向の信号が赤でもそのまま進むことができる
+<ul>
+<li>青色の灯火に従って進んでくる車や路面電車の進行を妨げてはいけない</li>
+<li>軽車両や二段階右折をする原動機付自転車は、右折方向の信号が赤の時はその右折している地点で停止しなければいけない</li>
+</ul>
+</li>
+</ul>
+<h2 id="矢印灯火"><a class="header" href="#矢印灯火">矢印灯火</a></h2>
+<h3 id="青色の矢印灯火"><a class="header" href="#青色の矢印灯火">青色の矢印灯火</a></h3>
+<ul>
+<li>車は矢印の方向に進むことができる</li>
+<li>右向き矢印の場合、右折や転回ができる
+<ul>
+<li>転回？</li>
+<li>軽車両や二段階右折を行う原動機付自転車は進むことができない</li>
+</ul>
+</li>
+</ul>
+<h3 id="黄色の矢印灯火"><a class="header" href="#黄色の矢印灯火">黄色の矢印灯火</a></h3>
+<ul>
+<li>路面電車に対する信号
+<ul>
+<li>歩行者や車は進んではいけない</li>
+<li>路面電車は矢印の方向に進むことができる</li>
+</ul>
+</li>
+</ul>
+<h2 id="点滅信号"><a class="header" href="#点滅信号">点滅信号</a></h2>
+<h3 id="黄色の点滅信号"><a class="header" href="#黄色の点滅信号">黄色の点滅信号</a></h3>
+<p>歩行者や車や路面電車は、他の交通に注意して進むことができる。
+徐行ではないので注意。</p>
+<p>天3ローソンの前の信号は夜中になると黄色/赤色点滅信号に切り替わる。</p>
+<h3 id="赤色の点滅信号"><a class="header" href="#赤色の点滅信号">赤色の点滅信号</a></h3>
+<ul>
+<li>歩行者は、他の交通に注意して進むことができる</li>
+<li>車や路面電車は、<strong>停止位置で一時停止し</strong>、安全確認をした後に進むことができる
+<ul>
+<li>止まれの標識と意味が同じ</li>
+</ul>
+</li>
+</ul>
+<h2 id="専用表示板"><a class="header" href="#専用表示板">専用表示板</a></h2>
+<p>信号機に「バス専用」などの表示板がある場合は、その標示板に示されている車だけがその信号に従う。</p>
+<h2 id="手信号"><a class="header" href="#手信号">手信号</a></h2>
+<ul>
+<li>腕を横に水平に上げているとき
+<ul>
+<li>警察官などの体の正面に平行する交通は青信号と同じ意味</li>
+<li>警察官などの体の正面に平行する交通に交差する交通は、赤信号と同じ意味</li>
+</ul>
+</li>
+<li>腕を垂直に上げているとき
+<ul>
+<li>腕を上げるまでと、元の状態に戻すまでの間も同じ</li>
+<li>警察官などの体の正面に平行する交通は黄信号と同じ意味</li>
+<li>警察官などの体の正面に平行する交通に交差する交通は、赤信号と同じ意味</li>
+</ul>
+</li>
+</ul>
+<h2 id="灯火による信号"><a class="header" href="#灯火による信号">灯火による信号</a></h2>
+<ul>
+<li>灯火を横に振っているとき
+<ul>
+<li>灯火が振られている方向に進行する交通は青信号と同じ意味</li>
+<li>灯火が振られている方向に進行する交通に交差する交通は、赤信号と同じ意味</li>
+</ul>
+</li>
+<li>灯火を頭上にあげたとき
+<ul>
+<li>灯火が振られている方向に進行する交通は黄信号と同じ意味</li>
+<li>灯火が振られている方向に進行する交通に交差する交通は、赤信号と同じ意味</li>
+</ul>
+</li>
+</ul>
+<h2 id="停止位置"><a class="header" href="#停止位置">停止位置</a></h2>
+<ul>
+<li>交差点では、その直前
+<ul>
+<li>警察官などが手信号などをしているときも同じ</li>
+</ul>
+</li>
+<li>交差点以外で、横断歩道や自転車横断帯・踏切があるところではその直前
+<ul>
+<li>警察官などが手信号などをしているときも同じ</li>
+</ul>
+</li>
+<li>交差点以外で、横断歩道も自転車横断帯も踏切もないところに信号機がある時は、信号機の直前
+<ul>
+<li>警察官などが手信号などをしているときは、<strong>その警察官などの1メートル手前</strong></li>
+</ul>
+</li>
+</ul>
+<p>警察官などは、危険の防止や交通の安全と円滑を図るため、特に必要があれば信号機の信号と異なる手信号や灯火による手信号などを行える。
+その場合にはその手信号が優先される。</p>
+<h2 id="左折可の標示板"><a class="header" href="#左折可の標示板">左折可の標示板</a></h2>
+<p>道路の左端や信号機に「左折可」の標示板がある時は、車は前方の信号が赤や黄であっても、歩行者など周りの交通に注意しながら左折することができる。
+警察官などが赤や黄の手信号をしている場合も同様。</p>
+<p>この場合でも、信号に従って横断している歩行者や特定小型原動機付自転車、自転車の進行を妨げてはならない。</p>
+<h2 id="様々な信号"><a class="header" href="#様々な信号">様々な信号</a></h2>
+<h3 id="時差式信号"><a class="header" href="#時差式信号">時差式信号</a></h3>
+<p>特定方向の信号が赤に変わる時間をずらすことで、右折しやすくしている。</p>
+<h3 id="セパレート信号"><a class="header" href="#セパレート信号">セパレート信号</a></h3>
+<p>いつも赤信号が表示されていて、青信号が表示されていない信号。</p>
+<h3 id="スクランブル交差点"><a class="header" href="#スクランブル交差点">スクランブル交差点</a></h3>
+<h2 id="見きり発信の禁止"><a class="header" href="#見きり発信の禁止">見きり発信の禁止</a></h2>
+<p>横の信号が黄や赤に変わったのを見て、前方の信号が赤なのにも関わらず発信すること。
+前方の信号がすぐに青に変わるとは限らないので危険。</p>
+<h2 id="残存歩行者"><a class="header" href="#残存歩行者">残存歩行者</a></h2>
+<p>青信号中に渡りきれなかった人を残存歩行者という。
+前方の信号が青に変わっても残存歩行者がいる可能性があるので注意する。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../law/road-traffic-act/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../law/road-traffic-act/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../assets/fzf.umd.js"></script>
+        <script src="../../assets/elasticlunr.js"></script>
+
+
+    </div>
+    </body>
+</html>
