@@ -1,0 +1,431 @@
+<!DOCTYPE HTML>
+<html lang="ja" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>物理学 - note.momee.mt</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href=".././mdbook-admonish.css">
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">note.momee.mt</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="物理学"><a class="header" href="#物理学">物理学</a></h1>
+<p>大学物理には主に10個のカテゴリがある</p>
+<ol>
+<li>素粒子理論</li>
+<li>素粒子実験</li>
+<li>原子核理論</li>
+<li>原子核実験</li>
+<li>宇宙理論</li>
+<li>宇宙観測</li>
+<li>物性理論</li>
+<li>物性実験</li>
+<li>生命物理</li>
+<li>プラズマ</li>
+</ol>
+<p>物理学は理論物理学と実験物理学に分かれている。
+理論を構築し、現象を予言するのが前者で、理論の予言や不備を実験でチェックしたり、新しい現象を発見するのが後者。</p>
+<h2 id="素粒子理論"><a class="header" href="#素粒子理論">素粒子理論</a></h2>
+<ul>
+<li>電子などの素粒子の運動や性質を調べる</li>
+<li>宇宙の基本法則を探す
+<ul>
+<li>基本法則は厳密で、どんな時も成立している</li>
+<li>基本法則は数式で書ける</li>
+<li>たとえば、運動方程式は <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">ma</span></span></span></span> と書ける
+<ul>
+<li>物体に働いている力 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span></span></li>
+<li>物体の質量 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></li>
+<li>物体の加速度 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>二重スリット実験
+<ul>
+<li>電子のようなミクロの粒子を発射する場合には、全く違う謎の縞模様が得られる</li>
+<li>ミクロの粒子は、粒子でありかつ波のようにも振る舞う
+<ul>
+<li>ニュートンの方程式とマクスウェル方程式はこれを考慮していない</li>
+<li>量子力学の誕生</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>量子力学の考え方
+<ul>
+<li>この世界は全ての可能な状態の重ね合わせでできている</li>
+<li>シュレディンガー方程式とファインマンの経路積分が等価
+<ul>
+<li>あらゆる経路（状態）を足し合わせたものとして積分として表現できる</li>
+</ul>
+</li>
+<li>量子力学を解けば確率的に運動を予言できる
+<ul>
+<li>ニュートンの運動方程式の予言は決定的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>素粒子理論
+<ul>
+<li>量子力学を使ってミクロの素粒子の運動を考える学問</li>
+<li>素粒子の種類
+<ul>
+<li>レプトン
+<ul>
+<li>電子</li>
+<li>μ電子</li>
+<li>τ電子</li>
+<li>電子ニュートリノ</li>
+<li>μニュートリノ</li>
+<li>τニュートリノ</li>
+</ul>
+</li>
+<li>クォーク
+<ul>
+<li>uクォーク</li>
+<li>sクォーク</li>
+<li>tクォーク</li>
+<li>dクォーク</li>
+<li>cクォーク</li>
+<li>bクォーク</li>
+</ul>
+</li>
+<li>力を伝播する粒子
+<ul>
+<li>光子</li>
+<li>Wボソン</li>
+<li>重力子</li>
+<li>グルーオン</li>
+<li>Zボソン</li>
+</ul>
+</li>
+<li>質量の起源となる粒子
+<ul>
+<li>ヒッグス粒子</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>標準模型
+<ul>
+<li>重力子が含まれていないが、素粒子は非常に軽いので多くの状況で重力を無視できる</li>
+<li>なぜ18種類、あるいはもっと素粒子が存在するのか、素粒子のようなミクロスケールでも重力が関係する現象、時間と空間はなぜかなどは標準模型からは答えられない</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>格子ゲージ理論
+<ul>
+<li>時空を格子点の集まりだと近似すると、有限次元の積分に近似できる
+<ul>
+<li>スーパーコンピューターなどを使って実際に計算できる</li>
+</ul>
+</li>
+<li>核力のような非常に強い相互作用も明らかになっている</li>
+</ul>
+</li>
+<li>一般相対性理論
+<ul>
+<li>エネルギーが多い物体は空間を歪める</li>
+<li>物体が運動すれば、空間もそれに応じて運動する</li>
+<li>一般相対性理論は空間や時間を研究対象にしたという点で大きなインパクトがあった</li>
+<li>極限まで歪むと光も抜け出せなくなる = ブラックホール
+<ul>
+<li>アインシュタイン方程式の厳密解として存在する（シュバルツシルト解）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>重力レンズ
+<ul>
+<li>中間に存在する非常に質量の大きい天体により空間が歪むことで、本来とは異なる場所に星があるように見える</li>
+</ul>
+</li>
+<li>素粒子理論の方向性
+<ul>
+<li>ミクロに対しては量子力学、マクロに対しては一般相対性理論を使うが、真の基本理論が存在するのではないか</li>
+<li>素朴に組み合わせたらいいのでは？
+<ul>
+<li>経路積分に空間の歪みも考慮させる</li>
+<li>実際の状況に合わない理論になってしまう</li>
+</ul>
+</li>
+<li>超弦理論
+<ul>
+<li>発散が生じることなく、重力の量子効果を計算できる</li>
+<li>数学的に難解
+<ul>
+<li>非可換幾何が自然に現れる</li>
+</ul>
+</li>
+<li>10次元時空であると予言する
+<ul>
+<li>10次元の世界から我々の4次元世界が導出できるかどうかは不明</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="素粒子実験"><a class="header" href="#素粒子実験">素粒子実験</a></h2>
+<ul>
+<li>物質の階層
+<ul>
+<li>物体から分子、原子、原子核、陽子・中性子、素粒子の順に分解される</li>
+</ul>
+</li>
+<li>Rutherfordの実験
+<ul>
+<li>α-線を金の薄膜にぶつける</li>
+<li>もし原子が一様に分布していればα-線はほとんど影響を受けずに通過するはず</li>
+<li>結果的にはいくつかが大きく散乱された
+<ul>
+<li>質量と電荷は中心に集中していることがわかり、原子核の存在が明らかになった</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>素粒子
+<ul>
+<li>クォークとレプトンを合わせて物質粒子と呼ぶ</li>
+</ul>
+</li>
+<li>基本相互作用
+<ul>
+<li>強い力
+<ul>
+<li>陽子と中性子を繋ぎ止めて構成する力</li>
+</ul>
+</li>
+<li>弱い力
+<ul>
+<li>中性子のベータ崩壊</li>
+<li>Wボソン、Zボソン</li>
+</ul>
+</li>
+<li>電磁気力</li>
+<li>重力</li>
+</ul>
+</li>
+<li>Tevatron加速器
+<ul>
+<li>陽子と反陽子を <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">12</span></span></span></span></span></span></span></span></span></span></span></span> 電子ボルトまで加速して互いを衝突させる</li>
+<li>なぜ高エネルギー加速器が必要か
+<ul>
+<li>限りなく小さいものが見えるか</li>
+<li>光は波で、波には波長があるが、波長よりは小さいものは見えない（分解能）</li>
+<li>可視光は <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span></span> mオーダーなので、はるかに短い波長の波が必要</li>
+</ul>
+</li>
+<li>実験の種類
+<ul>
+<li>固定標的</li>
+<li>ビーム衝突型
+<ul>
+<li>2つのビームを互いに逆方向に回す</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../law/road-traffic-act/restricted-access.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../law/road-traffic-act/restricted-access.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../assets/fzf.umd.js"></script>
+        <script src="../assets/elasticlunr.js"></script>
+
+
+    </div>
+    </body>
+</html>
