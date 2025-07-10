@@ -953,14 +953,13 @@
 <h2 id="参考資料-3"><a class="header" href="#参考資料-3">参考資料</a></h2>
 <ul>
 <li><a href="https://kdb.tsukuba.ac.jp/syllabi/2025/GB11621/jpn">筑波大学 GB11621 統計学</a></li>
+<li><a href="https://www.utp.or.jp/book/b300857.html">統計学入門</a></li>
 <li><a href="https://www.ohmsha.co.jp/book/9784274209130/">IT Text 確率統計学</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="記述統計"><a class="header" href="#記述統計">記述統計</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="分類と尺度"><a class="header" href="#分類と尺度">分類と尺度</a></h1>
-<p>統計では解析する対象によってさまざまなデータが扱われる。
-データはいくつかの種類に分類され、分類ごとに適用できる統計手法が異なる。</p>
+<h1 id="統計データ"><a class="header" href="#統計データ">統計データ</a></h1>
 <h2 id="分類"><a class="header" href="#分類">分類</a></h2>
 <p>データは、<strong>質的データ</strong>と<strong>量的データ</strong>に二分できる。
 質的データはカテゴリカルなデータで、量的データは数値として表されるため定量的に大きさを測ることができるデータ。</p>
@@ -975,15 +974,25 @@
 <h3 id="比率尺度"><a class="header" href="#比率尺度">比率尺度</a></h3>
 <p>量的データのうち、身長や体重などのように、数値の大小、差、比、全てに意味を持つデータ。</p>
 <p>0（原点）が何もないことを意味していれば比率尺度、そうでなければ間隔尺度のように見分けることができる。</p>
-<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="度数分布表とヒストグラム"><a class="header" href="#度数分布表とヒストグラム">度数分布表とヒストグラム</a></h1>
+<h2 id="多次元データ"><a class="header" href="#多次元データ">多次元データ</a></h2>
+<p>ある学生の身長、のように1つのラベルに対して1つの値だけが与えられているようなデータを<strong>1次元データ</strong>という。
+ある学生の身長と体重、のように1つのラベルに対して2つの値が与えられているようなデータを<strong>2次元データ</strong>という。
+ある学生の身長、体重、座高のように1つのラベルに対して3つの値が与えられているようなデータを<strong>3次元データ</strong>という。</p>
+<p>2次元以上のデータを1次元のデータに対して、<strong>多次元データ</strong>と呼ぶ。</p>
+<h2 id="時系列データ"><a class="header" href="#時系列データ">時系列データ</a></h2>
+<p>同一の対象の異なった時点での観測値からなるデータを<strong>時系列データ</strong>と呼ぶ。
+経済分析や気象学、天文学の現象分析に幅広く利用されている。</p>
+<h2 id="クロスセクションデータ"><a class="header" href="#クロスセクションデータ">クロスセクション・データ</a></h2>
+<p>いくつかの異なった対象について調査・実験を行い、観測値を得た場合のデータを<strong>クロスセクション・データ</strong>という。
+また、定めた一定範囲の対象に対して時系列データを集めたものを<strong>パネル・データ</strong>という。</p>
+<h2 id="度数分布表とヒストグラム"><a class="header" href="#度数分布表とヒストグラム">度数分布表とヒストグラム</a></h2>
 <p>データをある範囲ごとに区切ったとき、その範囲に属する数値の散らばりの様子を<strong>度数分布</strong>と呼ぶ。
 また、それを表にしたものを<strong>度数分布表</strong>という。
 さらに、度数分布表をグラフ化したものを<strong>ヒストグラム</strong>といい、その形状によってデータの分布を直観的に把握することができる。</p>
 <p>度数分布表において区切られた各区間を<strong>階級</strong>、各区間の幅を<strong>階級幅</strong>、階級のちょうど中央の値を階級を代表する値として<strong>階級値</strong>、各階級に属するデータ数を<strong>度数</strong>という。
 データの総数に対する度数の割合を<strong>相対度数</strong>といい、データ数が異なる複数のデータを比較する際に用いられる。
 また、度数、相対度数それぞれの累積値を<strong>累積度数</strong>、<strong>累積相対度数</strong>と呼ぶ。</p>
-<h2 id="ヒストグラムの注目するべき要素"><a class="header" href="#ヒストグラムの注目するべき要素">ヒストグラムの注目するべき要素</a></h2>
+<h3 id="ヒストグラムの注目するべき要素"><a class="header" href="#ヒストグラムの注目するべき要素">ヒストグラムの注目するべき要素</a></h3>
 <ol>
 <li>中心の位置</li>
 <li>ばらつき具合</li>
@@ -1001,7 +1010,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="ヒストグラムの作成"><a class="header" href="#ヒストグラムの作成">ヒストグラムの作成</a></h2>
+<h3 id="ヒストグラムの作成"><a class="header" href="#ヒストグラムの作成">ヒストグラムの作成</a></h3>
 <ol>
 <li>データ測量単位 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">u</span></span></span></span> を明確にし、<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> 個のデータを得る</li>
 <li>データの最大値、最小値をそれぞれ <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">max</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">min</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> とし、データの範囲 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">max</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">min</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> を求める</li>
@@ -1019,6 +1028,23 @@
 <li>階級を元に、データの度数を数え、度数分布表を作成する</li>
 <li>度数分布表よりヒストグラムを作成する</li>
 </ol>
+<h3 id="累積度数のグラフ化"><a class="header" href="#累積度数のグラフ化">累積度数のグラフ化</a></h3>
+<p>累積度数はヒストグラムと合わせて折れ線グラフで表示すると便利。
+同様のグラフを相対度数、相対累積度数にして作成できる。</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="分析プロセス"><a class="header" href="#分析プロセス">分析プロセス</a></h1>
+<p>統計データの分析における最初の仕事は、分析を行うべき仮説を考えること。
+仮説が構築され、分析したい対象が明らかになれば必要なデータが分かる。</p>
+<p>必要なデータが元から存在しない場合には、データ獲得を行う必要がある。
+この作業は、自然科学の分野では<strong>実験</strong>、人文社会科学の分野では<strong>調査</strong>と呼ばれる。
+実験や調査の規則や技術については実験計画法、社会調査法と呼ばれる分野がある。</p>
+<p>実験や調査により、生のデータである<strong>原データ</strong>を得ることができるが、大規模な実験・調査は費用面や時間面で誰にでもできるわけではない。
+行政機関や研究機関、調査会社、第三者の調査結果を利用することも多いが、その場合は原データを獲得できず、何らかの統計処理を施した後の調査結果である<strong>統計資料</strong>が分析対象の統計データとなる。</p>
+<h2 id="分類-1"><a class="header" href="#分類-1">分類</a></h2>
+<p>あらかじめ統計資料を作成する目的で調査を行い、その結果を集計したものを<strong>第一義統計</strong>と呼ぶ。
+対して、統計資料の作成が目的ではない資料を集計して得た統計資料を<strong>第二義統計</strong>、<strong>業務統計</strong>と呼ぶ。</p>
+<p>統計資料を加工して作成された統計資料を<strong>二次統計</strong>、<strong>加工統計</strong>と呼ぶ。</p>
+<p>データ収集の段階では、原データでなく統計資料の場合には、誰が行ったものか、全数調査か標本調査か、誰を対象としたものか、いつの時点のものか、どの地域を対象としたものか、分類の定義はどうなっているかなどの定義に注意する必要がある。</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
 <h1 id="計算理論"><a class="header" href="#計算理論">計算理論</a></h1>
 <h2 id="参考資料-4"><a class="header" href="#参考資料-4">参考資料</a></h2>
@@ -1611,7 +1637,7 @@ SGDは、ランダムに選んだ1つの事例の訓練誤差について勾配�
 <p>特徴量 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4444em;"></span><span class="mord"><span class="mord"><span class="mord boldsymbol">x</span></span></span></span></span></span> の1次元目を1として、<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.02778em;">w</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span><span class="mord"><span class="mord"><span class="mord boldsymbol">x</span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> と書ける。
 この時、パラメータ空間は <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8413em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span></span></span></span></span></span></span></span> であり、半空間は <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8804em;vertical-align:-0.0391em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.02778em;">w</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span><span class="mord"><span class="mord"><span class="mord boldsymbol">x</span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> と <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8804em;vertical-align:-0.0391em;"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.02778em;">w</span></span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span><span class="mord"><span class="mord"><span class="mord boldsymbol">x</span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> となる。</p>
 <div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="分類-1"><a class="header" href="#分類-1">分類</a></h1>
+<h1 id="分類-2"><a class="header" href="#分類-2">分類</a></h1>
 <p>分類問題ではラベルが離散値であり、たとえば気温や湿度から天気（晴れ、曇り、雨）を予測する。</p>
 <p>事例 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>（<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6891em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0358em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8413em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">D</span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0715em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">}</span></span></span></span>）から未知事例のラベルを当てる。</p>
 <p>空間をクラスごとに分割した領域全体を<strong>決定領域</strong>（decision region）という。
@@ -2327,6 +2353,284 @@ CLA: Carry-lookagead adder。</p>
 <h2 id="残存歩行者"><a class="header" href="#残存歩行者">残存歩行者</a></h2>
 <p>青信号中に渡りきれなかった人を残存歩行者という。
 前方の信号が青に変わっても残存歩行者がいる可能性があるので注意する。</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="標識標示"><a class="header" href="#標識標示">標識・標示</a></h1>
+<p>道路を通行する歩行者や車などは、標識・標示によって行われる交通の規制に従わなければならない。</p>
+<h2 id="標識"><a class="header" href="#標識">標識</a></h2>
+<p>交通規制などを示す掲示板のこと。</p>
+<ul>
+<li>本標識
+<ul>
+<li>規制標識
+<ul>
+<li>特定の交通方法を禁止したり、特定の方法に従って通行するよう指定したりするもの</li>
+</ul>
+</li>
+<li>指示標識
+<ul>
+<li>特定の交通方法ができることや、道路交通上決められた場所などを指示するもの</li>
+</ul>
+</li>
+<li>警戒標識
+<ul>
+<li>道路上の危険や注意しなければならない状況などを前もって道路利用者に知らせて注意を促すもの</li>
+</ul>
+</li>
+<li>案内標識
+<ul>
+<li>地点の名称・方面・距離などを示して、通行の便宜を図ろうとするもの</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>補助標識
+<ul>
+<li>本標識に取り付けられ、意味を補足する</li>
+</ul>
+</li>
+</ul>
+<h2 id="標示"><a class="header" href="#標示">標示</a></h2>
+<p>ペイントや道路びょうなどによって路面に示された線や記号・文字のこと。</p>
+<ul>
+<li>規制標示
+<ul>
+<li>特定の交通方法を禁止または指定するもの</li>
+</ul>
+</li>
+<li>指示標示
+<ul>
+<li>特定の交通方法ができることや、道路交通上決められた場所などを指示するもの</li>
+</ul>
+</li>
+</ul>
+<h2 id="警察官などの指示"><a class="header" href="#警察官などの指示">警察官などの指示</a></h2>
+<h3 id="混雑緩和の措置"><a class="header" href="#混雑緩和の措置">混雑緩和の措置</a></h3>
+<h3 id="緊急時の措置"><a class="header" href="#緊急時の措置">緊急時の措置</a></h3>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="物理学"><a class="header" href="#物理学">物理学</a></h1>
+<p>大学物理には主に10個のカテゴリがある</p>
+<ol>
+<li>素粒子理論</li>
+<li>素粒子実験</li>
+<li>原子核理論</li>
+<li>原子核実験</li>
+<li>宇宙理論</li>
+<li>宇宙観測</li>
+<li>物性理論</li>
+<li>物性実験</li>
+<li>生命物理</li>
+<li>プラズマ</li>
+</ol>
+<p>物理学は理論物理学と実験物理学に分かれている。
+理論を構築し、現象を予言するのが前者で、理論の予言や不備を実験でチェックしたり、新しい現象を発見するのが後者。</p>
+<h2 id="素粒子理論"><a class="header" href="#素粒子理論">素粒子理論</a></h2>
+<ul>
+<li>電子などの素粒子の運動や性質を調べる</li>
+<li>宇宙の基本法則を探す
+<ul>
+<li>基本法則は厳密で、どんな時も成立している</li>
+<li>基本法則は数式で書ける</li>
+<li>たとえば、運動方程式は <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">ma</span></span></span></span> と書ける
+<ul>
+<li>物体に働いている力 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span></span></li>
+<li>物体の質量 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">m</span></span></span></span></li>
+<li>物体の加速度 <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>二重スリット実験
+<ul>
+<li>電子のようなミクロの粒子を発射する場合には、全く違う謎の縞模様が得られる</li>
+<li>ミクロの粒子は、粒子でありかつ波のようにも振る舞う
+<ul>
+<li>ニュートンの方程式とマクスウェル方程式はこれを考慮していない</li>
+<li>量子力学の誕生</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>量子力学の考え方
+<ul>
+<li>この世界は全ての可能な状態の重ね合わせでできている</li>
+<li>シュレディンガー方程式とファインマンの経路積分が等価
+<ul>
+<li>あらゆる経路（状態）を足し合わせたものとして積分として表現できる</li>
+</ul>
+</li>
+<li>量子力学を解けば確率的に運動を予言できる
+<ul>
+<li>ニュートンの運動方程式の予言は決定的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>素粒子理論
+<ul>
+<li>量子力学を使ってミクロの素粒子の運動を考える学問</li>
+<li>素粒子の種類
+<ul>
+<li>レプトン
+<ul>
+<li>電子</li>
+<li>μ電子</li>
+<li>τ電子</li>
+<li>電子ニュートリノ</li>
+<li>μニュートリノ</li>
+<li>τニュートリノ</li>
+</ul>
+</li>
+<li>クォーク
+<ul>
+<li>uクォーク</li>
+<li>sクォーク</li>
+<li>tクォーク</li>
+<li>dクォーク</li>
+<li>cクォーク</li>
+<li>bクォーク</li>
+</ul>
+</li>
+<li>力を伝播する粒子
+<ul>
+<li>光子</li>
+<li>Wボソン</li>
+<li>重力子</li>
+<li>グルーオン</li>
+<li>Zボソン</li>
+</ul>
+</li>
+<li>質量の起源となる粒子
+<ul>
+<li>ヒッグス粒子</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>標準模型
+<ul>
+<li>重力子が含まれていないが、素粒子は非常に軽いので多くの状況で重力を無視できる</li>
+<li>なぜ18種類、あるいはもっと素粒子が存在するのか、素粒子のようなミクロスケールでも重力が関係する現象、時間と空間はなぜかなどは標準模型からは答えられない</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>格子ゲージ理論
+<ul>
+<li>時空を格子点の集まりだと近似すると、有限次元の積分に近似できる
+<ul>
+<li>スーパーコンピューターなどを使って実際に計算できる</li>
+</ul>
+</li>
+<li>核力のような非常に強い相互作用も明らかになっている</li>
+</ul>
+</li>
+<li>一般相対性理論
+<ul>
+<li>エネルギーが多い物体は空間を歪める</li>
+<li>物体が運動すれば、空間もそれに応じて運動する</li>
+<li>一般相対性理論は空間や時間を研究対象にしたという点で大きなインパクトがあった</li>
+<li>極限まで歪むと光も抜け出せなくなる = ブラックホール
+<ul>
+<li>アインシュタイン方程式の厳密解として存在する（シュバルツシルト解）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>重力レンズ
+<ul>
+<li>中間に存在する非常に質量の大きい天体により空間が歪むことで、本来とは異なる場所に星があるように見える</li>
+</ul>
+</li>
+<li>素粒子理論の方向性
+<ul>
+<li>ミクロに対しては量子力学、マクロに対しては一般相対性理論を使うが、真の基本理論が存在するのではないか</li>
+<li>素朴に組み合わせたらいいのでは？
+<ul>
+<li>経路積分に空間の歪みも考慮させる</li>
+<li>実際の状況に合わない理論になってしまう</li>
+</ul>
+</li>
+<li>超弦理論
+<ul>
+<li>発散が生じることなく、重力の量子効果を計算できる</li>
+<li>数学的に難解
+<ul>
+<li>非可換幾何が自然に現れる</li>
+</ul>
+</li>
+<li>10次元時空であると予言する
+<ul>
+<li>10次元の世界から我々の4次元世界が導出できるかどうかは不明</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="素粒子実験"><a class="header" href="#素粒子実験">素粒子実験</a></h2>
+<ul>
+<li>物質の階層
+<ul>
+<li>物体から分子、原子、原子核、陽子・中性子、素粒子の順に分解される</li>
+</ul>
+</li>
+<li>Rutherfordの実験
+<ul>
+<li>α-線を金の薄膜にぶつける</li>
+<li>もし原子が一様に分布していればα-線はほとんど影響を受けずに通過するはず</li>
+<li>結果的にはいくつかが大きく散乱された
+<ul>
+<li>質量と電荷は中心に集中していることがわかり、原子核の存在が明らかになった</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>素粒子
+<ul>
+<li>クォークとレプトンを合わせて物質粒子と呼ぶ</li>
+</ul>
+</li>
+<li>基本相互作用
+<ul>
+<li>強い力
+<ul>
+<li>陽子と中性子を繋ぎ止めて構成する力</li>
+</ul>
+</li>
+<li>弱い力
+<ul>
+<li>中性子のベータ崩壊</li>
+<li>Wボソン、Zボソン</li>
+</ul>
+</li>
+<li>電磁気力</li>
+<li>重力</li>
+</ul>
+</li>
+<li>Tevatron加速器
+<ul>
+<li>陽子と反陽子を <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">12</span></span></span></span></span></span></span></span></span></span></span></span> 電子ボルトまで加速して互いを衝突させる</li>
+<li>なぜ高エネルギー加速器が必要か
+<ul>
+<li>限りなく小さいものが見えるか</li>
+<li>光は波で、波には波長があるが、波長よりは小さいものは見えない（分解能）</li>
+<li>可視光は <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span></span> mオーダーなので、はるかに短い波長の波が必要</li>
+</ul>
+</li>
+<li>実験の種類
+<ul>
+<li>固定標的</li>
+<li>ビーム衝突型
+<ul>
+<li>2つのビームを互いに逆方向に回す</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
                     </main>
 

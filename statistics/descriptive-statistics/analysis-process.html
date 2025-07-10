@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>計算理論 - note.momee.mt</title>
+        <title>分析プロセス - note.momee.mt</title>
 
 
         <!-- Custom HTML head -->
@@ -12,34 +12,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="../favicon.svg">
-        <link rel="shortcut icon" href="../favicon.png">
-        <link rel="stylesheet" href="../css/variables.css">
-        <link rel="stylesheet" href="../css/general.css">
-        <link rel="stylesheet" href="../css/chrome.css">
-        <link rel="stylesheet" href="../css/print.css" media="print">
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="../fonts/fonts.css">
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
-        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
-        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="../../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        <link rel="stylesheet" href=".././mdbook-admonish.css">
+        <link rel="stylesheet" href="../.././mdbook-admonish.css">
 
 
         <!-- Provide site root and default themes to javascript -->
         <script>
-            const path_to_root = "../";
+            const path_to_root = "../../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc.js"></script>
+        <script src="../../toc.js"></script>
     </head>
     <body>
     <div id="body-container">
@@ -92,7 +92,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
             </noscript>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -127,7 +127,7 @@
                     <h1 class="menu-title">note.momee.mt</h1>
 
                     <div class="right-buttons">
-                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
 
@@ -157,29 +157,29 @@
                 <div id="content" class="content">
                     <main>
                         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
-<h1 id="計算理論"><a class="header" href="#計算理論">計算理論</a></h1>
-<h2 id="参考資料"><a class="header" href="#参考資料">参考資料</a></h2>
-<ul>
-<li>✅ <a href="https://kdb.tsukuba.ac.jp/syllabi/2023/GB20401/jpn">筑波大学 GB20401 オートマトンと形式言語</a>
-<ul>
-<li>2023年秋ABに履修した</li>
-</ul>
-</li>
-<li><a href="https://www.kyoritsu-pub.co.jp/book/b10030021.html">計算理論の基礎　[原著第3版] 1.オートマトンと言語</a></li>
-<li><a href="https://www.kyoritsu-pub.co.jp/book/b10031164.html">計算理論の基礎　[原著第3版] 2.計算可能性の理論</a></li>
-<li><a href="https://www.kyoritsu-pub.co.jp/book/b10030616.html">計算理論の基礎　[原著第3版] 3.複雑さの理論</a></li>
-<li><a href="https://www.oreilly.co.jp/books/9784873119335/">計算できるもの、計算できないもの</a></li>
-</ul>
+<h1 id="分析プロセス"><a class="header" href="#分析プロセス">分析プロセス</a></h1>
+<p>統計データの分析における最初の仕事は、分析を行うべき仮説を考えること。
+仮説が構築され、分析したい対象が明らかになれば必要なデータが分かる。</p>
+<p>必要なデータが元から存在しない場合には、データ獲得を行う必要がある。
+この作業は、自然科学の分野では<strong>実験</strong>、人文社会科学の分野では<strong>調査</strong>と呼ばれる。
+実験や調査の規則や技術については実験計画法、社会調査法と呼ばれる分野がある。</p>
+<p>実験や調査により、生のデータである<strong>原データ</strong>を得ることができるが、大規模な実験・調査は費用面や時間面で誰にでもできるわけではない。
+行政機関や研究機関、調査会社、第三者の調査結果を利用することも多いが、その場合は原データを獲得できず、何らかの統計処理を施した後の調査結果である<strong>統計資料</strong>が分析対象の統計データとなる。</p>
+<h2 id="分類"><a class="header" href="#分類">分類</a></h2>
+<p>あらかじめ統計資料を作成する目的で調査を行い、その結果を集計したものを<strong>第一義統計</strong>と呼ぶ。
+対して、統計資料の作成が目的ではない資料を集計して得た統計資料を<strong>第二義統計</strong>、<strong>業務統計</strong>と呼ぶ。</p>
+<p>統計資料を加工して作成された統計資料を<strong>二次統計</strong>、<strong>加工統計</strong>と呼ぶ。</p>
+<p>データ収集の段階では、原データでなく統計資料の場合には、誰が行ったものか、全数調査か標本調査か、誰を対象としたものか、いつの時点のものか、どの地域を対象としたものか、分類の定義はどうなっているかなどの定義に注意する必要がある。</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../statistics/descriptive-statistics/analysis-process.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../statistics/descriptive-statistics/data.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../image/recognition/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../theory-of-computation/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -189,11 +189,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../statistics/descriptive-statistics/analysis-process.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../statistics/descriptive-statistics/data.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../image/recognition/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../theory-of-computation/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -208,17 +208,17 @@
         </script>
 
 
-        <script src="../elasticlunr.min.js"></script>
-        <script src="../mark.min.js"></script>
-        <script src="../searcher.js"></script>
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
 
-        <script src="../clipboard.min.js"></script>
-        <script src="../highlight.js"></script>
-        <script src="../book.js"></script>
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
 
         <!-- Custom JS scripts -->
-        <script src="../assets/fzf.umd.js"></script>
-        <script src="../assets/elasticlunr.js"></script>
+        <script src="../../assets/fzf.umd.js"></script>
+        <script src="../../assets/elasticlunr.js"></script>
 
 
     </div>
