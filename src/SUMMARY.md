@@ -75,4 +75,5 @@
     - [道路交通法](./law/road-traffic-act/README.md)
         - [信号](./law/road-traffic-act/traffic-light.md)
         - [標識・標示](./law/road-traffic-act/sign.md)
+        - [通行禁止](./law/road-traffic-act/restricted-access.md)
 - [物理学](./physics/README.md)
